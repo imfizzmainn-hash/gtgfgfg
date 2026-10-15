@@ -7,7 +7,7 @@
 
 - The GitHub repository is public and uses the `main` branch.
 - The repository was empty before this bootstrap.
-- The repository now contains the README and Master Specification v4.0.
+- The repository now contains the README and five project documents under `docs/`, including Master Specification v4.0.
 - No application source, test suite, database schema, or deployment configuration is present in this repository.
 - No application has been run and no tests have been executed.
 
@@ -17,6 +17,7 @@
 |---|---|
 | Product and technical specification | Available as `docs/MASTER_SPEC_v4.0.md` |
 | Repository inventory | Verified |
+| Audit report and project tracking docs | Available under `docs/` |
 | Prior prototype source | Not found here; location unknown |
 | Application implementation | Not present |
 | Test results | None |
