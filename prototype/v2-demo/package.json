@@ -1,0 +1,9 @@
+{
+  "name": "petid-prototype-v2-demo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "serve": "node serve-demo.mjs"
+  }
+}
