@@ -7,14 +7,15 @@
 
 ## Scope and provenance
 
-The repository was initially empty. It now contains project documentation and a standalone HTML snapshot named `PETID_Demo_v1_8_PODGLAD.html`, recovered from the user's saved project files and stored under `archive/prototypes/v1.8/`.
+The repository was initially empty. It now contains project documentation, an unchanged standalone HTML snapshot named `PETID_Demo_v1_8_PODGLAD.html` recovered from the user's saved project files, and recovered v1.9/v1.10 architecture and audit notes under `archive/prototypes/`.
 
-This snapshot is an older v1.8 demo, not the v1.8.5 prototype or the modular v1.10 source tree described by the project documents. It is archived for review and must not be treated as the current application baseline.
+The v1.8 snapshot is an older demo, not the v1.8.5 prototype or modular v1.10 source tree. The v1.10 shell and its notes reference modules and tests that have not been recovered. These materials are archived for review and must not be treated as the current application baseline.
 
 ## Checks performed
 
-- Inspected the standalone HTML and its embedded JavaScript.
+- Inspected the standalone v1.8 HTML and its embedded JavaScript.
 - Confirmed it has no external script or stylesheet dependencies and contains 14 inline script blocks.
+- Compared the GitHub blob ID of the archived v1.8 file with the local source; the IDs match, confirming the file was preserved exactly.
 - Ran `node --check` on all 14 extracted inline scripts: all passed.
 - Ran a Node harness against the embedded data adapter to check recovery behavior for malformed local storage. The behavior described below reproduced.
 - Did not run a browser, UI, cross-browser, attachment, or end-to-end test suite.
@@ -47,9 +48,9 @@ No exploitable XSS issue was confirmed in this limited static review. Several `i
 
 | Area | Evidence | Status |
 |---|---|---|
-| Archived v1.8 demo | One standalone HTML snapshot | Present for limited audit |
-| v1.8.5 source/package | Not recovered | Unverified |
-| Modular v1.10 source/package | Only a 10-line shell and audit notes were found; its referenced JS/CSS files are missing | Incomplete |
+| Archived v1.8 demo | One standalone HTML snapshot; blob matches recovered file | Present for limited audit |
+| v1.8.5 source/package | Not recovered; a saved architecture note refers to `legacy-v1.8.5/` | Unverified |
+| v1.10 source/package | A shell and audit notes were found; the notes are archived, while the referenced JS/CSS modules and tests are missing | Incomplete |
 | Backend, database, authentication, tenant rules | No implementation evidence | Not present in this repository |
 | Existing automated test suite | No test files or test configuration in the recovered snapshot | Not found |
 | Browser and E2E behavior | Not run | Unverified |
