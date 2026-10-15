@@ -4,7 +4,7 @@ PETID is a project for organizing and sharing an animal's health history with cl
 
 ## Project status
 
-This repository contains the PETID Master Development Specification v4.0, project tracking documents, historical v1.8/v1.9/v1.10 materials, and a separate v1.8 recovery workbench. The original v1.8 snapshot remains unchanged. The v1.8.5 package and full v1.10 source tree are still missing. Nothing here is a production application.
+The default branch contains the PETID Master Development Specification v4.0, historical audit materials, project tracking documents, an unchanged archived v1.8 snapshot, and a separate v1.8 recovery workbench. The clickable v2.0 demo is in the [prototype-v2-demo branch](https://github.com/imfizzmainn-hash/gtgfgfg/tree/prototype-v2-demo/prototype/v2-demo). Its domain tests and syntax checks pass; browser visual QA is pending. Nothing here is a production application.
 
 ## Start here
 
