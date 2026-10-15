@@ -1,0 +1,483 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PETID Clinic — Dashboard</title><style>
+
+:root{--green:#38701b;--deep:#244a14;--light:#edf5e9;--bg:#f6f8f6;--line:#e3e9e1;--text:#1e2a22;--muted:#718074;--white:#fff}*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text)}button,input,select,textarea{font:inherit}button{cursor:pointer}.shell{display:flex;min-height:100vh}.sidebar{width:248px;background:#fff;border-right:1px solid var(--line);padding:25px 15px;display:flex;flex-direction:column;gap:28px;position:sticky;top:0;height:100vh}.brand{display:flex;align-items:center;gap:12px;padding:0 12px}.mark{width:40px;height:40px;background:var(--green);color:#fff;border-radius:12px;display:grid;place-items:center;font-size:23px}.brand strong{font-size:21px;letter-spacing:-.7px}.brand small{display:block;font-size:10px;color:var(--muted);letter-spacing:2px;font-weight:700}.side-title{font-size:10px;color:#9ca9a0;letter-spacing:1.5px;font-weight:800;padding:0 13px;margin-bottom:9px}.nav{display:grid;gap:5px}.nav button{border:0;background:transparent;color:#5c6a60;text-align:left;padding:13px 14px;border-radius:11px;display:flex;gap:13px;align-items:center;font-weight:600;font-size:13px}.nav button:hover,.nav button.active{background:var(--light);color:var(--green)}.nav .ico{width:20px;font-size:17px;text-align:center}.side-bottom{margin-top:auto;border-top:1px solid var(--line);padding:18px 10px 0;display:flex;gap:10px;align-items:center}.avatar{width:37px;height:37px;border-radius:50%;background:#d7e8d0;display:grid;place-items:center;color:var(--deep);font-weight:800}.side-bottom b{font-size:12px}.side-bottom small{display:block;color:var(--muted);font-size:11px;margin-top:4px}.main{min-width:0;flex:1}.top{height:80px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 38px;gap:20px}.top .clinic{font-size:13px;font-weight:700}.top .clinic span{display:block;color:var(--muted);font-size:11px;font-weight:400;margin-top:4px}.top-actions{display:flex;align-items:center;gap:16px}.search{display:flex;align-items:center;gap:9px;background:#f5f7f4;border:1px solid var(--line);border-radius:10px;padding:0 12px;min-width:260px}.search input{border:0;background:transparent;outline:none;padding:11px 0;width:100%;font-size:13px}.content{max-width:1450px;margin:auto;padding:36px 38px 70px}.heading{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:25px}.heading h1{font-size:27px;letter-spacing:-.8px;margin:0 0 7px}.muted{color:var(--muted)}.heading p{margin:0;color:var(--muted);font-size:13px}.btn{border:1px solid var(--line);background:white;border-radius:10px;padding:11px 16px;font-size:13px;font-weight:700;color:var(--text)}.btn.primary{background:var(--green);color:white;border-color:var(--green)}.btn:hover{filter:brightness(.96)}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:22px}.stat,.panel{background:white;border:1px solid var(--line);border-radius:16px}.stat{padding:20px}.stat-top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px}.stat-icon{background:var(--light);color:var(--green);padding:9px;border-radius:10px;font-size:19px}.stat strong{display:block;font-size:29px;letter-spacing:-1px;margin:14px 0 6px}.stat small{color:var(--muted);font-size:11px}.dashboard-grid{display:grid;grid-template-columns:1.65fr 1fr;gap:20px}.panel{padding:23px;margin-bottom:20px}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:19px}.panel h2{margin:0;font-size:16px;letter-spacing:-.3px}.link{border:0;background:none;color:var(--green);font-size:12px;font-weight:700}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;text-align:left;font-size:12px}th{font-size:11px;color:#89968d;font-weight:700;background:#fafbfa}th,td{padding:14px 10px;border-bottom:1px solid #eef1ed}tr:last-child td{border-bottom:0}.patient-cell{display:flex;align-items:center;gap:10px;min-width:140px}.pet-icon{width:37px;height:37px;background:#edf4e9;color:var(--green);display:grid;place-items:center;border-radius:10px;font-size:20px}.patient-cell strong{display:block}.patient-cell small{display:block;color:var(--muted);margin-top:3px}.pill{border-radius:20px;padding:5px 9px;background:#edf5e9;color:#38701b;font-size:10px;font-weight:700;white-space:nowrap}.pill.orange{background:#fff3e5;color:#a66b16}.pill.gray{background:#f0f2f0;color:#6b786d}.timeline{display:grid;gap:19px}.event{display:flex;gap:12px;align-items:flex-start}.dot{width:34px;height:34px;flex:0 0 34px;border-radius:10px;background:var(--light);display:grid;place-items:center;color:var(--green)}.event strong{font-size:12px}.event p{font-size:11px;color:var(--muted);margin:5px 0}.event small{font-size:10px;color:#a2ada5}.quick{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}.quick button{border:1px solid var(--line);background:#fbfcfb;border-radius:11px;padding:16px 10px;text-align:left;font-size:12px;font-weight:700}.quick button span{display:block;font-size:23px;color:var(--green);margin-bottom:10px}.quick button:hover{background:var(--light)}.section{display:none}.section.active{display:block}.filterrow{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}.filterrow input,.filterrow select{padding:12px;border:1px solid var(--line);border-radius:10px;background:white;min-width:180px;outline:none}.cardgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.petcard{padding:20px;border:1px solid var(--line);background:white;border-radius:15px;text-align:left}.petcard:hover{border-color:#a5c498;box-shadow:0 5px 20px #204a1012}.petcard h3{margin:12px 0 6px}.petcard p{color:var(--muted);font-size:12px}.petcard small{font-size:11px;color:var(--green)}.empty{color:var(--muted);font-size:13px;padding:22px;text-align:center}.profile{display:grid;grid-template-columns:1fr 1.3fr;gap:20px}.profile-title{display:flex;gap:15px;align-items:center}.profile-title .pet-icon{height:70px;width:70px;font-size:36px}.detail{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}.detail small{display:block;color:var(--muted);font-size:11px}.detail strong{display:block;font-size:13px;margin-top:5px}.back{margin-bottom:20px}.modal-wrap{display:none;position:fixed;inset:0;background:#15271b99;z-index:10;align-items:center;justify-content:center;padding:20px}.modal-wrap.show{display:flex}.modal{width:min(520px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:18px;padding:26px;box-shadow:0 20px 80px #0002}.modal header{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}.modal h2{margin:0;font-size:20px}.close{border:0;background:#f1f3f0;border-radius:8px;padding:8px 12px}.form{display:grid;grid-template-columns:1fr 1fr;gap:15px}.field{display:grid;gap:6px;font-size:12px;font-weight:700}.field.full{grid-column:1/-1}.field input,.field select,.field textarea{width:100%;border:1px solid #dce5db;border-radius:9px;padding:11px;outline:none;background:#fff}.field textarea{min-height:80px;resize:vertical}.form-actions{grid-column:1/-1;display:flex;justify-content:flex-end;gap:10px;margin-top:10px}.notice{font-size:11px;color:var(--muted);margin-top:14px}.mobile-toggle{display:none}.toast{position:fixed;bottom:24px;right:24px;background:#1f3e22;color:white;padding:13px 20px;border-radius:10px;display:none;z-index:20;font-size:13px}.toast.show{display:block}@media(max-width:1100px){.stats{grid-template-columns:repeat(2,1fr)}.dashboard-grid{grid-template-columns:1fr}.cardgrid{grid-template-columns:repeat(2,1fr)}}@media(max-width:760px){.sidebar{position:fixed;z-index:5;transform:translateX(-100%);transition:.2s;box-shadow:0 0 30px #0001}.sidebar.open{transform:translateX(0)}.mobile-toggle{display:block;border:0;background:transparent;font-size:22px}.top{padding:0 18px;height:70px}.top .search{display:none}.content{padding:25px 16px}.heading{align-items:flex-start}.heading h1{font-size:23px}.cardgrid,.profile{grid-template-columns:1fr}.stats{gap:10px}.stat{padding:15px}.stat strong{font-size:24px}.form{grid-template-columns:1fr}.field.full,.form-actions{grid-column:auto}}
+
+</style><style>
+.demo-label{font-size:11px;color:#38701b;background:#e8f2e4;padding:5px 9px;border-radius:30px;vertical-align:middle;white-space:nowrap}.scribe-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.scribe-grid .field{display:grid;gap:8px;margin-bottom:15px;font-size:13px;font-weight:600}.scribe-grid .field textarea,.scribe-grid .field select,.scribe-fields textarea{width:100%;border:1px solid #dbe6d8;border-radius:10px;padding:11px;background:#fff;font:inherit}.scribe-grid .field textarea{resize:vertical}.scribe-fields label{display:grid;gap:5px;margin:10px 0;font-size:12px;font-weight:700}.scribe-fields textarea{min-height:62px;resize:vertical}.scribe-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.owner-pet{border:1px solid #e1e9df;border-radius:13px;padding:18px;margin:14px 0}.owner-pet h3{margin:0 0 8px}.owner-pet ul{padding-left:20px;font-size:13px;line-height:1.8}.agent-nav{font:inherit!important}@media(max-width:850px){.scribe-grid{grid-template-columns:1fr}}
+/* PETID v1.4 */
+.clinical-timeline{display:grid;gap:12px;margin-top:18px}.clinical-event{padding:18px;border:1px solid var(--line,#e1e6df);border-radius:14px;background:#fff}.clinical-event h3{margin:10px 0 5px;font-size:15px}.clinical-event p{margin:5px 0 9px;white-space:pre-wrap}.clinical-meta{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.clinical-tag{font-size:11px;font-weight:700;background:#eaf3e6;color:#38701b;padding:5px 9px;border-radius:20px}.detail-actions{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}.correction-btn{margin-top:10px;font-size:12px}
+
+.doc-filters{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:18px}.doc-filters label{display:grid;gap:5px;font-size:12px;min-width:160px;flex:1}.doc-filters select,.doc-filters input{padding:10px;border:1px solid #d6dfd2;border-radius:8px;background:#fff}.doc-details{border-top:1px solid #d6dfd2;padding:16px;margin-top:14px}.doc-details[hidden]{display:none}
+
+/* PETID v1.6 owner profile */
+.owner-pet-header{display:flex;justify-content:space-between;align-items:start;gap:12px;flex-wrap:wrap}.owner-pet-header h2{margin:0 0 8px}.owner-sections{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0}.owner-sections section{background:#f7faf5;padding:14px;border-radius:10px}.owner-sections h3{font-size:14px;margin:0 0 8px}.owner-sections ul{padding-left:18px;margin:0}.owner-share{border-top:1px solid #dce6d7;padding-top:15px}.owner-share-actions{display:flex;align-items:end;gap:10px;flex-wrap:wrap}.owner-share-actions label{display:grid;gap:6px;font-size:12px}.owner-share-actions select{padding:10px;border:1px solid #dce6d7;border-radius:8px}.grant-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #e8eee5;font-size:13px;flex-wrap:wrap}.grant-preview{padding:12px;margin:10px 0;border:1px solid #e0e8db;border-radius:10px}.grant-preview ul{padding-left:20px;font-size:13px}@media(max-width:700px){.owner-sections{grid-template-columns:1fr}}
+
+.attachment-panel{margin:18px 0;padding:16px;border:1px solid #cddfc9;border-radius:12px;background:#f8fcf6}.attachment-panel .field{display:block;margin:10px 0}.attachment-panel input[type=file]{display:block;margin-top:8px;max-width:100%;font-size:14px}.attachment-preview{display:block;max-width:100%;max-height:430px;object-fit:contain;border-radius:10px;margin-top:14px}.attachment-actions{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+/* PETID v1.6.3: multi-file gallery */
+.attachment-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-top:14px}.attachment-tile{min-width:0;border:1px solid #dfe8dc;border-radius:12px;padding:12px;background:#fff}.attachment-tile img,.attachment-pdf{width:100%;height:145px;object-fit:contain;border-radius:8px;background:#f3f7f1}.attachment-pdf{display:flex;align-items:center;justify-content:center;font-size:28px}.attachment-tile p{overflow-wrap:anywhere;margin:8px 0 4px}.attachment-tile small{color:#63716b}.attachment-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.attachment-actions .btn{font-size:12px;padding:7px 9px}
+
+/* PETID v1.7 workflow */
+.workflow-step{display:flex;align-items:center;gap:14px;padding:14px 8px;border-bottom:1px solid #e6eae6}.workflow-step>div{flex:1}.workflow-step p{margin:4px 0 0}.workflow-status{display:inline-grid;place-items:center;border-radius:50%;background:#eaf4e6;color:#38701b;font-weight:700;width:30px;height:30px}.workflow-step button:disabled{opacity:.55;cursor:not-allowed}.workflow-diagnostics{list-style:none;padding:0}.workflow-diagnostics li{padding:6px 0}.workflow-diagnostics span{color:#38701b;font-weight:700}@media(max-width:600px){.workflow-step{flex-wrap:wrap}.workflow-step button{margin-left:42px}}
+
+/* PETID v1.8 AI Demo */
+.ai-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:start}.ai-grid .panel{min-width:0}.ai-grid textarea{width:100%;min-height:75px}.ai-grid input[type=file]{max-width:100%}.ai-actions{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.ai-output{margin:14px 0;display:grid;gap:8px}.ai-output p{overflow-wrap:anywhere}.ai-check{display:flex;align-items:flex-start;gap:9px;margin:12px 0}.ai-check input{margin-top:4px}@media(max-width:980px){.ai-grid{grid-template-columns:1fr}}
+
+</style></head><body><div class="shell"><aside class="sidebar" id="sidebar"><div class="brand"><div class="mark">✚</div><div><strong>PETID</strong><small>CLINIC PLATFORM</small></div></div><div><div class="side-title">MENU GŁÓWNE</div><nav class="nav" id="nav"><button class="active" data-page="dashboard"><span class="ico">▦</span> Dashboard</button><button data-page="patients"><span class="ico">♧</span> Pacjenci</button><button data-page="visits"><span class="ico">▤</span> Wizyty</button><button data-page="documents"><span class="ico">▧</span> Dokumenty</button><button data-page="vaccinations"><span class="ico">✳</span> Szczepienia</button><button data-page="medications"><span class="ico">✚</span> Leczenie</button><button data-page="aiLab" class="agent-nav"><span class="ico">✧</span> AI + OCR Demo</button><button data-page="scribe" class="agent-nav"><span class="ico">✦</span> Asystent wizyty</button></nav></div><div><div class="side-title">ZARZĄDZANIE</div><nav class="nav"><button data-page="owner"><span class="ico">♡</span> Panel właściciela</button><button data-page="scribe"><span class="ico">✦</span> Medical Scribe</button><button data-page="workflow"><span class="ico">✓</span> Test procesu</button><button data-page="staff"><span class="ico">♙</span> Personel</button><button data-page="settings"><span class="ico">⚙</span> Ustawienia</button></nav></div><div class="side-bottom"><div class="avatar">AK</div><div><b>Anna Kowalska</b><small>Administrator kliniki</small></div></div></aside><main class="main"><div class="top"><button class="mobile-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button><div class="clinic">AnimalVet — Klinika Weterynaryjna<span>Panel zarządzania · Wersja demonstracyjna</span></div><div class="top-actions"><div class="search"><span>⌕</span><input id="globalSearch" placeholder="Szukaj pacjenta po imieniu lub PETID..."></div><span title="Powiadomienia">♧</span><div class="avatar">AK</div></div></div><div class="content">
+<section id="dashboard" class="section active"><p class="notice"><strong>DEMO OFFLINE:</strong> fikcyjne dane w localStorage, brak logowania i zabezpieczeń serwerowych. Nie wprowadzaj danych rzeczywistych.</p><p class="notice" id="recoveryWarning" role="alert" hidden><strong>Wykryto uszkodzony zapis.</strong> Zapis został zablokowany, a kopię zachowano, jeśli było to możliwe. Użyj „Przywróć dane demonstracyjne” tylko wtedy, gdy chcesz zastąpić uszkodzone dane przykładowymi.</p><div class="heading"><div><h1>Dzień dobry, Anno 👋</h1><p>Oto przegląd aktywności Twojej kliniki.</p></div><button class="btn primary" data-modal="patient">＋ Dodaj pacjenta</button></div><div class="stats"><div class="stat"><div class="stat-top">Pacjenci <span class="stat-icon">♧</span></div><strong id="countPatients">0</strong><small>Zarejestrowani w klinice</small></div><div class="stat"><div class="stat-top">Wizyty <span class="stat-icon">▤</span></div><strong id="countVisits">0</strong><small>Wszystkie zarejestrowane</small></div><div class="stat"><div class="stat-top">Dokumenty <span class="stat-icon">▧</span></div><strong id="countDocs">0</strong><small>W kartotekach pacjentów</small></div><div class="stat"><div class="stat-top">Szczepienia <span class="stat-icon">✳</span></div><strong id="countVacc">0</strong><small>Zapisane w systemie</small></div></div><div class="dashboard-grid"><div><div class="panel"><div class="panel-head"><h2>Ostatnie wizyty</h2><button class="link" data-page="visits">Zobacz wszystkie →</button></div><div class="table-wrap" id="recentVisits"></div></div><div class="panel"><div class="panel-head"><h2>Ostatni pacjenci</h2><button class="link" data-page="patients">Lista pacjentów →</button></div><div id="recentPatients"></div></div></div><div><div class="panel"><div class="panel-head"><h2>Szybkie działania</h2></div><div class="quick"><button data-modal="patient"><span>♧</span>Nowy pacjent</button><button data-modal="visit"><span>▤</span>Nowa wizyta</button><button data-modal="document"><span>▧</span>Dodaj dokument</button><button data-modal="vaccination"><span>✳</span>Dodaj szczepienie</button></div></div><div class="panel"><div class="panel-head"><h2>Aktywność kliniki</h2></div><div class="timeline" id="activity"></div></div><div class="panel" style="background:#edf5e9;border-color:#d9e9d1"><h2 style="color:#2b581b">PETID Clinic · MVP 1.0</h2><p style="font-size:12px;line-height:1.7;color:#52714c">Prototyp pokazuje przepływ pracy kliniki. W kolejnym etapie podłączymy Supabase, autoryzację i kontrolę dostępu.</p></div></div></div></section>
+<section id="patients" class="section"><div class="heading"><div><h1>Pacjenci</h1><p>Wyszukuj zwierzęta i zarządzaj kartotekami.</p></div><button class="btn primary" data-modal="patient">＋ Dodaj pacjenta</button></div><div class="filterrow"><input id="patientSearch" placeholder="Imię, PETID, właściciel..."><select id="speciesFilter"><option value="">Wszystkie gatunki</option><option>Pies</option><option>Kot</option><option>Inne</option></select></div><div class="cardgrid" id="patientCards"></div></section>
+<section id="patientDetail" class="section"><button class="btn back" data-page="patients">← Wróć do pacjentów</button><div id="patientDetailContent"></div></section>
+<section id="visits" class="section"><div class="heading"><div><h1>Wizyty</h1><p>Historia konsultacji i leczenia pacjentów.</p></div><button class="btn primary" data-modal="visit">＋ Nowa wizyta</button></div><div class="panel"><div class="table-wrap" id="visitsTable"></div></div></section>
+<section id="documents" class="section"><div class="heading"><div><h1>Dokumenty</h1><p>Rejestr dokumentacji przypisanej do pacjentów.</p></div><button class="btn primary" data-modal="document">＋ Dodaj dokument</button></div><div class="panel"><div class="doc-filters"><label>Pacjent <select id="docPetFilter"><option value="">Wszyscy pacjenci</option></select></label><label>Typ <select id="docTypeFilter"><option value="">Wszystkie typy</option><option>Karta wizyty</option><option>Wyniki badań</option><option>Recepta</option><option>Inne</option></select></label><label>Szukaj <input id="docSearch" placeholder="Nazwa lub opis"></label></div><div class="table-wrap" id="documentsTable"></div><div id="documentDetails" class="doc-details" hidden></div></div><p class="notice">W demonstracji możesz dołączyć JPG, PNG, WEBP lub PDF do utworzonego dokumentu. Pliki zapisują się lokalnie w IndexedDB przeglądarki. Podgląd OCR jest tylko symulacją. Prawdziwe pliki będą przechowywane w zabezpieczonym magazynie po wdrożeniu backendu.</p></section>
+<section id="vaccinations" class="section"><div class="heading"><div><h1>Szczepienia</h1><p>Historia szczepień i planowane terminy.</p></div><button class="btn primary" data-modal="vaccination">＋ Dodaj szczepienie</button></div><div class="panel"><div class="table-wrap" id="vaccinationsTable"></div></div></section>
+<section id="medications" class="section"><div class="heading"><div><h1>Leczenie</h1><p>Rejestr leków i zaleceń terapeutycznych.</p></div><button class="btn primary" data-modal="medication">＋ Dodaj lek</button></div><div class="panel"><div class="table-wrap" id="medicationsTable"></div></div></section>
+<section id="staff" class="section"><div class="heading"><div><h1>Personel kliniki</h1><p>Przegląd użytkowników i ich ról.</p></div></div><div class="panel"><div class="table-wrap"><table><thead><tr><th>Pracownik</th><th>Rola</th><th>Status</th></tr></thead><tbody><tr><td>Anna Kowalska</td><td>CLINIC_ADMIN</td><td><span class="pill">Aktywny</span></td></tr><tr><td>Jan Nowak</td><td>VET</td><td><span class="pill">Aktywny</span></td></tr><tr><td>Maria Zielińska</td><td>STAFF</td><td><span class="pill">Aktywny</span></td></tr></tbody></table></div></div><p class="notice">Zarządzanie rzeczywistymi kontami i zaproszeniami wymaga bezpiecznego backendu.</p></section>
+<section id="settings" class="section"><div class="heading"><div><h1>Ustawienia kliniki</h1><p>Informacje o placówce i konfiguracji PETID.</p></div></div><div class="panel" style="max-width:650px"><div class="detail"><div><small>Nazwa kliniki</small><strong>AnimalVet — Klinika Weterynaryjna</strong></div><div><small>Miasto</small><strong>Koszalin</strong></div><div><small>Plan</small><strong>DEMO / MVP 1.0</strong></div><div><small>Status</small><strong>Tryb demonstracyjny</strong></div></div><p class="notice">To dane przykładowe. Nie wprowadzaj tutaj prawdziwych danych medycznych ani osobowych.</p><button class="btn" id="resetDemo" style="margin-top:15px">Przywróć dane demonstracyjne</button></div></section>
+</div>
+<section id="workflow" class="section"><div class="heading"><div><h1>Test procesu PETID <span class="demo-label">v1.7 · DEMO</span></h1><p>Sprawdź jeden kompletny scenariusz: klinika → właściciel → udostępnienie → cofnięcie dostępu.</p></div></div><p class="notice"><strong>Wyłącznie symulacja:</strong> przyciski tworzą fikcyjne rekordy w lokalnej przeglądarce. Nie ma uwierzytelniania, prawdziwej kontroli dostępu ani zgód prawnych.</p><div class="panel"><div class="panel-head"><h2>Scenariusz end-to-end</h2><button class="btn" id="workflowReset" type="button">Rozpocznij nowy scenariusz</button></div><p class="muted">Każdy krok sprawdza faktyczny stan magazynu danych, a nie samo kliknięcie. Dane testowe pozostają w kartotekach, dopóki nie przywrócisz całego demo.</p><div id="workflowSummary" role="status"></div><div id="workflowSteps" class="workflow-steps"></div></div><div class="panel" style="margin-top:18px"><h2>Diagnostyka</h2><div id="workflowDiagnostics"></div><p class="muted">To test funkcjonalny logiki w tej przeglądarce. Nie jest testem zabezpieczeń serwera ani integracji między klinikami.</p></div></section><section id="scribe" class="section"><div class="heading"><div><h1>Medical Scribe <span class="demo-label">DEMO · reguły</span></h1><p>Przygotuj szkic dokumentacji wizyty i zatwierdź go ręcznie.</p></div></div>
+<div class="panel" style="max-width:960px"><div class="scribe-grid"><div><label class="field">Pacjent<select id="scribePatient"></select></label><label class="field">Rodzaj wizyty<select id="scribeType"><option>Konsultacja</option><option>Kontrola</option><option>Szczepienie</option><option>Inne</option></select></label><label class="field">Notatka lekarza<textarea id="scribeNote" rows="10" placeholder="Powód: kaszel od 3 dni&#10;Objawy: ...&#10;Rozpoznanie: ...&#10;Leczenie: ...&#10;Zalecenia: ..."></textarea></label><button class="btn primary" id="scribeParse" type="button">✦ Uporządkuj notatkę</button></div>
+<div><h2>Projekt wpisu</h2><p class="notice">To parser nagłówków, nie model AI. Nie dopisuje rozpoznań. Lekarz musi zweryfikować wszystkie pola.</p><div id="scribeFields" class="scribe-fields"></div><div class="scribe-actions"><button class="btn" id="scribeCopy" type="button">Kopiuj JSON</button><button class="btn primary" id="scribeApprove" type="button">✓ Zatwierdź i zapisz wizytę</button></div><p class="muted" id="scribeStatus" role="status"></p></div></div></div></section>
+<section id="owner" class="section"><div class="heading"><div><h1>Panel właściciela <span class="demo-label">SYMULACJA</span></h1><p>Profil zwierzęcia, historia i demonstracyjne udostępnianie klinice.</p></div></div><div class="panel"><label class="field" style="max-width:390px">Wybierz fikcyjnego właściciela<select id="ownerSelect"></select></label><p class="notice"><strong>DEMO:</strong> przełącznik właściciela nie jest logowaniem. Uprawnienia są wyłącznie symulowane; wszystkie dane pozostają lokalnie dostępne w przeglądarce. Nie wprowadzaj prawdziwych danych.</p><div id="ownerView"></div></div><div class="panel" style="margin-top:18px"><h2>Podgląd udostępnienia dla kliniki</h2><p class="muted">Sprawdź, jakie rekordy obejmuje aktywne demonstracyjne upoważnienie.</p><div id="ownerGrantPreview"></div></div></section>
+<section id="aiLab" class="section"><div class="heading"><div><h1>AI Studio <span class="demo-label">v1.8 · SYMULACJA</span></h1><p>Projekty notatek i odczyt dokumentów — bez API i bez rzeczywistego rozpoznawania obrazów.</p></div></div><p class="notice"><strong>WYŁĄCZNIE DEMO:</strong> Dane fikcyjne. Tryb Scribe stosuje reguły tekstowe, a OCR pokazuje symulację na danych przykładowych lub tekście wpisanym ręcznie. Obraz ani PDF nie jest analizowany. Wyniki wymagają sprawdzenia i zatwierdzenia przez lekarza.</p><div class="ai-grid"><div class="panel"><h2>Medical Scribe — projekt</h2><label class="field">Pacjent<select id="aiPatient"></select></label><label class="field">Notatka z wizyty<textarea id="aiNote" rows="7" placeholder="Powód: kontrola po zabiegu&#10;Objawy: brak nowych objawów&#10;Rozpoznanie: do weryfikacji"></textarea></label><div class="ai-actions"><button class="btn" type="button" id="aiExample">Wstaw przykład</button><button class="btn primary" type="button" id="aiGenerate">Utwórz projekt</button></div><div id="aiDraft" class="ai-output"></div><label class="ai-check"><input type="checkbox" id="aiVerified"> Potwierdzam, że lekarz zweryfikował i ewentualnie poprawił wszystkie pola.</label><button class="btn primary" type="button" id="aiApprove" disabled>Zatwierdź i zapisz wizytę</button><p id="aiStatus" class="muted" role="status"></p></div><div class="panel"><h2>OCR — demonstracja przepływu</h2><label class="field">Wybierz zdjęcie lub PDF (maks. 10 MB)<input type="file" id="ocrFile" accept=".jpg,.jpeg,.png,.webp,.pdf,image/jpeg,image/png,image/webp,application/pdf"></label><p id="ocrFileInfo" class="muted">Nie wybrano pliku. Plik nie jest przesyłany ani zapisywany.</p><label class="field">Tekst źródłowy do symulacji (możesz wpisać ręcznie)<textarea id="ocrSource" rows="6" placeholder="Dokument: Wynik badania&#10;Data: 2026-10-01&#10;Pacjent: Rex&#10;Uwagi: wynik przykładowy"></textarea></label><div class="ai-actions"><button class="btn" type="button" id="ocrExample">Wstaw fikcyjny dokument</button><button class="btn primary" type="button" id="ocrAnalyze">Symuluj odczyt</button></div><div id="ocrResult" class="ai-output" aria-live="polite"></div><p class="muted">Nie ma automatycznego OCR. Żaden wynik nie trafia do historii bez odrębnego zatwierdzenia i utworzenia dokumentu.</p></div></div></section></main></div><div class="modal-wrap" id="modalWrap"><div class="modal"><header><h2 id="modalTitle"></h2><button class="close" id="closeModal">✕</button></header><form class="form" id="dataForm"></form><p class="notice">Dane demonstracyjne zapisywane są wyłącznie w pamięci tej przeglądarki (localStorage).</p></div></div><div class="toast" id="toast"></div><script>
+/* Demo-only transactional coordinator for localStorage; not a database transaction. */
+(function(root){'use strict';
+const JOURNAL='petid_demo_tx_journal_v1';
+const KEYS=['petid_clinic_demo_v1','petid_demo_owner_grants_v1','petid_demo_workflow_v1'];
+function snapshot(storage=root.localStorage){return Object.fromEntries(KEYS.map(k=>[k,storage.getItem(k)]));}
+function restore(before,storage=root.localStorage){for(const k of KEYS){if(before[k]===null)storage.removeItem(k);else storage.setItem(k,before[k]);}}
+function recover(storage=root.localStorage){const raw=storage.getItem(JOURNAL);if(!raw)return false;const before=JSON.parse(raw);restore(before,storage);storage.removeItem(JOURNAL);return true;}
+function commit(payload,storage=root.localStorage,options={}){
+ if(root.PETIDStore?.recoveryRequired?.()&&!options.allowRecoveryReset)throw Error('Zapis zablokowany: odzyskaj lub jawnie zresetuj uszkodzone dane demonstracyjne.');
+ const before=snapshot(storage);storage.setItem(JOURNAL,JSON.stringify(before));
+ try{for(const k of KEYS){if(!Object.prototype.hasOwnProperty.call(payload,k))continue;if(payload[k]===null)storage.removeItem(k);else storage.setItem(k,payload[k]);}storage.removeItem(JOURNAL);return true;}
+ catch(err){try{restore(before,storage);storage.removeItem(JOURNAL);}catch(rollbackErr){throw Error('Błąd zapisu i wycofania zmian. Uruchom ponownie aplikację: '+rollbackErr.message)}throw err;}
+}
+const api={KEYS,JOURNAL,snapshot,recover,commit};root.PETIDDemoTransaction=api;
+if(typeof module!=='undefined'&&module.exports)module.exports=api;
+})(typeof window!=='undefined'?window:globalThis);
+
+</script><script>
+/* Reset guard: cancellation must not mutate any persisted state. */
+(function(root){'use strict';function run({confirmReset,commit,afterCommit}){if(!confirmReset())return false;commit();afterCommit();return true}const api={run};root.PETIDResetController=api;if(typeof module!=='undefined'&&module.exports)module.exports=api;})(typeof window!=='undefined'?window:globalThis);
+
+</script><script>
+/* PETID Demo v1.2 — shared, local-only data adapter. NOT authorization. */
+(function(root){
+ 'use strict';
+ const KEY='petid_clinic_demo_v1';
+ const RECOVERY_KEY='petid_clinic_demo_v1_corrupt_backup';
+ let recoveryRequired=false,recoveryBackupSaved=false;
+ const collections=['patients','visits','documents','vaccinations','medications'];
+ const OWNER_PREFIX='OWN-';
+ const makeId=prefix=>prefix+(root.crypto?.randomUUID?.()||Date.now()+'-'+Math.random().toString(36).slice(2));
+ const ownerFor=(state,pet)=>state.owners?.find(o=>o.id===pet.ownerId);
+ const petOwnerIds=(state,petId)=>state.petOwners?.filter(x=>x.petId===petId).map(x=>x.ownerId)||[];
+ function ownerName(state,pet){return ownerFor(state,pet)?.name||pet.owner||'Nieznany właściciel'}
+ function resolveOwner(state,name){if(!Array.isArray(state.owners))state.owners=[];if(!Array.isArray(state.petOwners))state.petOwners=[];const normalized=trim(name);let found=state.owners.find(o=>o.name.toLocaleLowerCase('pl')===normalized.toLocaleLowerCase('pl'));if(!found){found={id:makeId(OWNER_PREFIX),name:normalized};state.owners.push(found)}return found.id}
+ function linkOwner(state,pet){if(!Array.isArray(state.petOwners))state.petOwners=[];const ownerId=pet.ownerId;state.petOwners=state.petOwners.filter(x=>x.petId!==pet.id);state.petOwners.push({petId:pet.id,ownerId,relationship:'primary'})}
+ function migrate(state){if(!Array.isArray(state.owners))state.owners=[];if(!Array.isArray(state.petOwners))state.petOwners=[];if(!Array.isArray(state.clinics))state.clinics=[{id:'CLINIC-DEMO-001',name:'AnimalVet (demo)'}];for(const pet of state.patients){if(!pet.ownerId||!state.owners.some(o=>o.id===pet.ownerId))pet.ownerId=resolveOwner(state,pet.owner||'Właściciel demonstracyjny');pet.owner=ownerName(state,pet);if(!state.petOwners.some(x=>x.petId===pet.id&&x.ownerId===pet.ownerId))linkOwner(state,pet)}for(const visit of state.visits){if(!['draft','approved'].includes(visit.status))visit.status='draft';if(!visit.clinicId)visit.clinicId='CLINIC-DEMO-001'}return state}
+ function reset(seed){root.localStorage.removeItem(KEY);root.localStorage.removeItem(AUDIT_KEY);root.localStorage.removeItem('petid_demo_owner_grants_v1');recoveryRequired=false;recoveryBackupSaved=false;return migrate(structuredClone(seed))}
+
+ const AUDIT_KEY='petid_demo_audit_v1';
+ const trim=v=>String(v??'').trim();
+ const validDate=v=>!v || (/^\d{4}-\d{2}-\d{2}$/.test(v) && !Number.isNaN(Date.parse(v+'T12:00:00')) && new Date(v+'T12:00:00').toISOString().slice(0,10)===v);
+ function check(kind, record, state){
+  if(!collections.includes(kind))throw Error('Nieznany rodzaj rekordu.');
+  const x={...record};
+  for(const [k,v] of Object.entries(x))if(typeof v==='string')x[k]=trim(v);
+  if(kind==='patients'){
+   if(!x.name || x.name.length>100)throw Error('Imię zwierzęcia: 1–100 znaków.');
+   if(!['Pies','Kot','Inne'].includes(x.species))throw Error('Wybierz poprawny gatunek.');
+   if(!x.owner || x.owner.length>150)throw Error('Podaj właściciela (maks. 150 znaków).');
+   if(x.chip && !/^\d{15}$/.test(x.chip))throw Error('Mikrochip musi mieć 15 cyfr.');
+   if(x.chip && state.patients.some(p=>p.chip===x.chip && p.id!==x.id))throw Error('Ten mikrochip jest już przypisany do pacjenta.');
+   if(!validDate(x.birth))throw Error('Nieprawidłowa data urodzenia.');
+  } else {
+   if(!state.patients.some(p=>p.id===x.pet))throw Error('Pacjent nie istnieje.');
+   const required={visits:['date','type','diagnosis','vet'],documents:['name','type','date'],vaccinations:['name','date'],medications:['name','status']}[kind];
+   for(const field of required)if(!x[field])throw Error('Brakuje wymaganego pola: '+field);
+   for(const field of ['date','next'])if(x[field]&&!validDate(x[field]))throw Error('Nieprawidłowa data: '+field);
+   if(kind==='documents'){if(x.visitId){const v=state.visits.find(v=>String(v.id)===String(x.visitId));if(!v)throw Error('Powiązana wizyta nie istnieje.');if(v.pet!==x.pet)throw Error('Wizyta należy do innego pacjenta.');}if(x.description&&x.description.length>1000)throw Error('Opis może mieć maksymalnie 1000 znaków.');if(x.name.length>180)throw Error('Nazwa dokumentu jest za długa.');}if(kind==='vaccinations'&&x.next&&x.next<x.date)throw Error('Kolejne szczepienie nie może poprzedzać wykonanego.');
+  }
+  return x;
+ }
+ function normalize(obj,seed){
+  if(!obj||typeof obj!=='object'||!collections.every(k=>Array.isArray(obj[k])))return migrate(structuredClone(seed));
+  return migrate(obj);
+ }
+ function load(seed){
+  try{root.PETIDDemoTransaction?.recover();}catch(err){throw Error("Nie udało się odzyskać przerwanego zapisu: "+err.message)}
+  const raw=root.localStorage.getItem(KEY);
+  if(raw===null){recoveryRequired=false;recoveryBackupSaved=false;return normalize(null,seed)}
+  try{
+   const parsed=JSON.parse(raw);
+   if(!parsed||typeof parsed!=='object'||!collections.every(k=>Array.isArray(parsed[k])))throw Error('Niepoprawna struktura zapisanych danych.');
+   recoveryRequired=false;recoveryBackupSaved=false;return migrate(parsed);
+  }catch(err){
+   recoveryRequired=true;recoveryBackupSaved=false;
+   try{const backup=root.localStorage.getItem(RECOVERY_KEY);if(backup===null){root.localStorage.setItem(RECOVERY_KEY,raw);recoveryBackupSaved=true;}else recoveryBackupSaved=backup===raw;}catch{}
+   return migrate(structuredClone(seed));
+  }
+ }
+ function assertWritable(){if(recoveryRequired)throw Error('Zapis zablokowany: dane demonstracyjne są uszkodzone. Zachowano kopię, jeśli pozwoliła na to pamięć. Użyj „Przywróć dane demonstracyjne”, aby jawnie zastąpić je fikcyjnymi danymi.');}
+ function clearRecoveryLock(){recoveryRequired=false;recoveryBackupSaved=false;}
+ function save(state){assertWritable();const payload=JSON.stringify(state);root.localStorage.setItem(KEY,payload);return true}
+ function add(state,kind,record){const x=check(kind,record,state);if(!x.id)x.id=(root.crypto?.randomUUID?.()||'demo-'+Date.now()+'-'+Math.random().toString(36).slice(2));if(kind==='patients'){x.ownerId=resolveOwner(state,x.owner);linkOwner(state,x)}if(kind==='visits'){x.status=x.status||'draft';x.clinicId=x.clinicId||'CLINIC-DEMO-001'}state[kind].push(x);return x}
+ function update(state,kind,id,patch){
+  if(!['patients','visits'].includes(kind))throw Error('Edycja tego typu nie jest dostępna.');
+  const item=state[kind].find(x=>String(x.id)===String(id));
+  if(!item)throw Error('Nie znaleziono rekordu.');
+  if(kind==='visits' && item.status==='approved')throw Error('Zatwierdzona wizyta jest zablokowana.');
+  const allowed=kind==='patients'?['name','species','breed','owner','birth','chip']:['date','type','diagnosis','vet'];
+  const changes=Object.fromEntries(Object.entries(patch).filter(([k])=>allowed.includes(k)));
+  const candidate=check(kind,{...item,...changes},state);
+  Object.assign(item,candidate);
+  if(kind==='patients'){item.ownerId=resolveOwner(state,item.owner);linkOwner(state,item)}
+  return item;
+ }
+ function approveVisit(state,id){
+  const v=state.visits.find(x=>String(x.id)===String(id));
+  if(!v)throw Error('Nie znaleziono wizyty.');
+  if(v.status==='approved')throw Error('Wizyta już zatwierdzona.');
+  check('visits',v,state);v.status='approved';v.approvedAt=new Date().toISOString();return v;
+ }
+ function correctVisit(state,id,reason,changes){
+  const v=state.visits.find(x=>String(x.id)===String(id));
+  if(!v)throw Error('Nie znaleziono wizyty.');
+  if(v.status!=='approved')throw Error('Korekta wymaga zatwierdzonej wizyty.');
+  reason=trim(reason);
+  if(reason.length<10)throw Error('Powód korekty musi mieć co najmniej 10 znaków.');
+  if(typeof changes==='string')changes={diagnosis:changes}; // compatibility with v1.6 UI
+  if(!changes||typeof changes!=='object'||Array.isArray(changes))throw Error('Nieprawidłowa korekta.');
+  const allowed=['date','type','diagnosis','vet'];
+  const fields={};
+  for(const [field,value] of Object.entries(changes)){
+   if(!allowed.includes(field))throw Error('Nie można korygować pola: '+field);
+   const next=trim(value);
+   if(!next)throw Error('Korekta nie może zawierać pustego pola.');
+   if(field==='date'&&!validDate(next))throw Error('Nieprawidłowa data korekty.');
+   const previous=effectiveVisit(v)[field];
+   if(next!==previous)fields[field]={previous,updated:next};
+  }
+  if(!Object.keys(fields).length)throw Error('Nowa treść nie różni się od poprzedniej.');
+  if(!Array.isArray(v.corrections))v.corrections=[];
+  const c={id:makeId('COR-'),at:new Date().toISOString(),reason,fields,author:'Użytkownik demonstracyjny'};
+  if(fields.diagnosis){c.previous=fields.diagnosis.previous;c.updated=fields.diagnosis.updated}
+  v.corrections.push(c);return c;
+ }
+ function effectiveVisit(visit){const result={...visit};for(const correction of visit.corrections||[]){for(const [field,change] of Object.entries(correction.fields||{}))result[field]=change.updated}return result}
+ function appendAudit(entry){
+  try{const items=JSON.parse(root.localStorage.getItem(AUDIT_KEY)||'[]');items.push({at:new Date().toISOString(),...entry});root.localStorage.setItem(AUDIT_KEY,JSON.stringify(items.slice(-200)));}catch{}
+ }
+ function getAudit(){try{return JSON.parse(root.localStorage.getItem(AUDIT_KEY)||'[]')}catch{return []}}
+ const api={load,save,reset,migrate,add,update,approveVisit,correctVisit,effectiveVisit,ownerName,petOwnerIds,appendAudit,getAudit,check,validDate,collections,recoveryRequired:()=>recoveryRequired,recoveryBackupSaved:()=>recoveryBackupSaved,assertWritable,clearRecoveryLock};
+ root.PETIDStore=api;
+ if(typeof module!=='undefined'&&module.exports)module.exports=api;
+})(typeof window!=='undefined'?window:globalThis);
+
+</script><script>
+/* PETID v1.6.3: demo-only multi-file attachments; IndexedDB is not secure medical storage. */
+(function(root){'use strict';
+const DB='petid_demo_attachments_v1', STORE='files', MAX=10*1024*1024;
+const allowed=new Set(['image/jpeg','image/png','image/webp','application/pdf']);
+function validate(file){if(!file)throw Error('Wybierz plik.');if(!allowed.has(file.type))throw Error('Dozwolone: JPG, PNG, WEBP, PDF.');if(file.size>MAX)throw Error('Plik przekracza 10 MB.');if(file.size===0)throw Error('Plik jest pusty.');return true;}
+function validateBatch(files){const list=Array.from(files||[]);for(const file of list)validate(file);if(list.length>20)throw Error('Można dodać maksymalnie 20 plików jednocześnie.');return true;}
+function open(){return new Promise((resolve,reject)=>{if(!root.indexedDB)return reject(Error('IndexedDB jest niedostępne.'));const req=root.indexedDB.open(DB,2);req.onupgradeneeded=()=>{const db=req.result;if(db.objectStoreNames.contains(STORE)){const old=req.transaction.objectStore(STORE);if(old.keyPath==='documentId'){db.deleteObjectStore(STORE);db.createObjectStore(STORE,{keyPath:'id'}).createIndex('documentId','documentId',{unique:false});}else if(!old.indexNames.contains('documentId'))old.createIndex('documentId','documentId',{unique:false});}else db.createObjectStore(STORE,{keyPath:'id'}).createIndex('documentId','documentId',{unique:false});};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);});}
+// Migrate old v1.6.2 attachments before opening upgraded DB (preserves existing files).
+let migration=null;
+async function ready(){if(migration)return migration;migration=(async()=>{if(!root.indexedDB)throw Error('IndexedDB jest niedostępne.');const db=await new Promise((resolve,reject)=>{const r=root.indexedDB.open(DB);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);r.onupgradeneeded=()=>{};});let legacy=[];if(db.objectStoreNames.contains(STORE)&&db.version===1){legacy=await new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readonly');const r=tx.objectStore(STORE).getAll();r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);});}db.close();const upgraded=await open();if(legacy.length){await new Promise((resolve,reject)=>{const tx=upgraded.transaction(STORE,'readwrite');const store=tx.objectStore(STORE);for(const a of legacy)store.put({id:'legacy-'+a.documentId,documentId:String(a.documentId),name:a.name,type:a.type,size:a.size,updatedAt:a.updatedAt,blob:a.blob});tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);});}upgraded.close();})();return migration;}
+async function transact(mode,fn){await ready();const db=await open();return new Promise((resolve,reject)=>{const tx=db.transaction(STORE,mode);let result;try{result=fn(tx.objectStore(STORE));}catch(e){db.close();reject(e);return;}tx.oncomplete=()=>{db.close();resolve(result);};tx.onerror=()=>{db.close();reject(tx.error||Error('Błąd zapisu pliku.'));};});}
+const uuid=()=>root.crypto?.randomUUID?.()||'file-'+Date.now()+'-'+Math.random().toString(36).slice(2);
+async function putMany(documentId,files){validateBatch(files);const rows=Array.from(files).map(file=>({id:uuid(),documentId:String(documentId),name:file.name,type:file.type,size:file.size,updatedAt:new Date().toISOString(),blob:file}));await transact('readwrite',s=>{rows.forEach(row=>s.put(row));});return rows;}
+async function list(documentId){await ready();const db=await open();return new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readonly');const req=tx.objectStore(STORE).index('documentId').getAll(String(documentId));req.onsuccess=()=>resolve(req.result||[]);req.onerror=()=>reject(req.error);tx.oncomplete=()=>db.close();});}
+async function getFile(id){await ready();const db=await open();return new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readonly');const req=tx.objectStore(STORE).get(String(id));req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);tx.oncomplete=()=>db.close();});}
+async function removeFile(id){await transact('readwrite',s=>s.delete(String(id)));}
+async function clear(){await transact('readwrite',s=>s.clear());}
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let activeId=null, urls=[];function cleanup(){urls.forEach(u=>URL.revokeObjectURL(u));urls=[];}
+function notify(message){const el=document.getElementById('toast');if(el){el.textContent=message;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),4000);}else alert(message);}
+async function show(documentId){activeId=String(documentId);cleanup();const panel=document.getElementById('attachmentPanel');if(!panel)return;panel.textContent='Wczytywanie plików…';try{const files=await list(documentId);if(activeId!==String(documentId))return;let html='<h4>Załączniki ('+files.length+')</h4><label class="field">Dodaj kolejne pliki<input type="file" id="attachmentInput" multiple accept=".jpg,.jpeg,.png,.webp,.pdf,image/jpeg,image/png,image/webp,application/pdf"></label><div class="attachment-gallery">';for(const a of files){const url=URL.createObjectURL(a.blob);urls.push(url);html+='<article class="attachment-tile">'+(a.type.startsWith('image/')?'<a href="'+url+'" target="_blank" rel="noopener"><img src="'+url+'" alt="'+esc(a.name)+'" loading="lazy"></a>':'<div class="attachment-pdf">📄 PDF</div>')+'<p title="'+esc(a.name)+'">'+esc(a.name)+'</p><small>'+(a.size/1024/1024).toFixed(2)+' MB</small><div class="attachment-actions"><button type="button" class="btn" data-download-file="'+esc(a.id)+'">Pobierz</button><button type="button" class="btn" data-remove-file="'+esc(a.id)+'">Usuń</button></div></article>';}html+='</div>';if(!files.length)html+='<p class="muted">Brak załączników. Dodaj zdjęcia lub PDF.</p>';panel.innerHTML=html;}catch(e){panel.textContent='Nie udało się odczytać plików: '+e.message;}}
+if(typeof document!=='undefined'){
+document.addEventListener('change',async e=>{if(e.target.id!=='attachmentInput'||!activeId)return;const files=[...e.target.files];try{await putMany(activeId,files);await show(activeId);notify('Dodano '+files.length+' plików.');}catch(err){notify(err.message);}});
+document.addEventListener('click',async e=>{const b=e.target.closest('[data-download-file],[data-remove-file]');if(!b||!activeId)return;const id=b.dataset.downloadFile||b.dataset.removeFile;try{const a=await getFile(id);if(!a||String(a.documentId)!==activeId)throw Error('Plik nie należy do tego dokumentu.');if(b.dataset.removeFile){if(!confirm('Usunąć wybrany załącznik?'))return;await removeFile(id);await show(activeId);return;}const url=URL.createObjectURL(a.blob);const link=document.createElement('a');link.href=url;link.download=a.name;document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);}catch(err){notify(err.message);}});
+document.addEventListener('click',e=>{if(e.target.closest('#closeDocDetails')){activeId=null;cleanup();}});
+}
+root.PETIDAttachments={show,putMany,list,getFile,removeFile,clear,validate,validateBatch};
+if(typeof module!=='undefined'&&module.exports)module.exports={validate,validateBatch,MAX,allowed};
+})(typeof window!=='undefined'?window:globalThis);
+
+</script><script>
+/* PETID v1.6.2: document metadata with local demo attachments. No OCR or real permissions. */
+(function(root){'use strict';
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let currentState=null;
+function render(state,patient){currentState=state;const pet=document.getElementById('docPetFilter');const type=document.getElementById('docTypeFilter');const search=document.getElementById('docSearch');if(!pet)return;
+const prev=pet.value;pet.innerHTML='<option value="">Wszyscy pacjenci</option>'+state.patients.map(p=>'<option value="'+esc(p.id)+'">'+esc(p.name)+'</option>').join('');pet.value=state.patients.some(p=>p.id===prev)?prev:'';
+const q=search.value.toLowerCase().trim();const filtered=state.documents.filter(d=>(!pet.value||d.pet===pet.value)&&(!type.value||d.type===type.value)&&(!q||[d.name,d.description,d.type].join(' ').toLowerCase().includes(q)));
+document.getElementById('documentsTable').innerHTML='<table><thead><tr><th>Pacjent</th><th>Dokument</th><th>Typ</th><th>Data</th><th>Wizyta</th><th>Akcja</th></tr></thead><tbody>'+(filtered.map(d=>'<tr><td>'+esc(patient(d.pet)?.name||'Nieznany')+'</td><td>'+esc(d.name)+'</td><td>'+esc(d.type)+'</td><td>'+esc(d.date)+'</td><td>'+(d.visitId?'Powiązana':'—')+'</td><td><button class="link" data-doc-id="'+esc(d.id)+'">Szczegóły</button></td></tr>').join('')||'<tr><td colspan="6">Brak dokumentów spełniających kryteria.</td></tr>')+'</tbody></table>';
+}
+function details(id){const d=currentState?.documents.find(d=>String(d.id)===String(id));if(!d)return;const v=d.visitId?currentState.visits.find(v=>String(v.id)===String(d.visitId)):null;const el=document.getElementById('documentDetails');el.hidden=false;el.innerHTML='<h3>'+esc(d.name)+'</h3><p><b>Typ:</b> '+esc(d.type)+' · <b>Data:</b> '+esc(d.date)+'</p><p><b>Opis:</b> '+esc(d.description||'Brak opisu')+'</p><p><b>Powiązana wizyta:</b> '+(v?esc(v.date+' · '+v.type):'Brak')+'</p><div id="attachmentPanel" class="attachment-panel"></div><div class="notice"><b>OCR — symulacja:</b> w tej wersji nie przetwarzamy pliku ani nie rozpoznajemy tekstu. Docelowo wynik OCR będzie wymagał sprawdzenia przez człowieka.</div><button class="btn" id="closeDocDetails">Zamknij</button>';if(root.PETIDAttachments)root.PETIDAttachments.show(id);
+}
+document.addEventListener('change',e=>{if(['docPetFilter','docTypeFilter'].includes(e.target.id)&&currentState)render(currentState,id=>currentState.patients.find(p=>p.id===id));});
+document.addEventListener('input',e=>{if(e.target.id==='docSearch'&&currentState)render(currentState,id=>currentState.patients.find(p=>p.id===id));});
+document.addEventListener('click',e=>{const b=e.target.closest('[data-doc-id],#closeDocDetails');if(!b)return;if(b.id==='closeDocDetails')document.getElementById('documentDetails').hidden=true;else details(b.dataset.docId);});
+root.PETIDDocuments={render};
+})(window);
+
+</script><script>
+
+const seed={patients:[{id:'PET-7F42A91',name:'Rex',species:'Pies',breed:'Labrador',owner:'Jan Kowalski',birth:'2019-04-12',chip:'616000000000001'},{id:'PET-3B19C82',name:'Luna',species:'Kot',breed:'Brytyjski',owner:'Anna Wiśniewska',birth:'2021-06-08',chip:'616000000000002'},{id:'PET-9A56D14',name:'Max',species:'Pies',breed:'Beagle',owner:'Piotr Nowak',birth:'2020-11-20',chip:'616000000000003'},{id:'PET-6E23F71',name:'Mila',species:'Kot',breed:'Europejski',owner:'Ewa Mazur',birth:'2022-03-16',chip:''},{id:'PET-1C84B20',name:'Borys',species:'Pies',breed:'Owczarek niemiecki',owner:'Marek Lis',birth:'2018-09-30',chip:''}],visits:[{id:1,pet:'PET-7F42A91',date:'2026-10-12',type:'Kontrola',diagnosis:'Wizyta kontrolna',vet:'Jan Nowak'},{id:2,pet:'PET-3B19C82',date:'2026-10-11',type:'Konsultacja',diagnosis:'Badanie ogólne',vet:'Jan Nowak'},{id:3,pet:'PET-9A56D14',date:'2026-10-10',type:'Kontrola',diagnosis:'Kontrola po leczeniu',vet:'Jan Nowak',status:'draft'}],documents:[{id:1,pet:'PET-7F42A91',name:'Wyniki morfologii.pdf',date:'2026-10-12',type:'Wyniki badań'},{id:2,pet:'PET-3B19C82',name:'Karta wizyty.pdf',date:'2026-10-11',type:'Karta wizyty'}],vaccinations:[{id:1,pet:'PET-7F42A91',name:'Wścieklizna',date:'2026-03-12',next:'2027-03-12'},{id:2,pet:'PET-3B19C82',name:'RCP',date:'2026-06-05',next:'2027-06-05'}],medications:[{id:1,pet:'PET-9A56D14',name:'Preparat demonstracyjny',dose:'Według zaleceń lekarza',status:'Zakończone'}]};let data=PETIDStore.load(seed);const save=()=>PETIDStore.save(data);const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const patient=id=>data.patients.find(p=>p.id===id);const pname=id=>patient(id)?.name||'Nieznany';const date=s=>s?new Date(s+'T12:00:00').toLocaleDateString('pl-PL'):'—';const td=s=>'<td>'+esc(s)+'</td>';const table=(headers,rows)=>'<table><thead><tr>'+headers.map(x=>'<th>'+x+'</th>').join('')+'</tr></thead><tbody>'+ (rows.length?rows.join(''):'<tr><td colspan="'+headers.length+'" class="empty">Brak danych</td></tr>')+'</tbody></table>';const linkPatient=id=>'<button class="link" data-pet="'+esc(id)+'">'+esc(pname(id))+'</button>';function render(){document.getElementById('countPatients').textContent=data.patients.length;document.getElementById('countVisits').textContent=data.visits.length;document.getElementById('countDocs').textContent=data.documents.length;document.getElementById('countVacc').textContent=data.vaccinations.length;const visits=[...data.visits].sort((a,b)=>b.date.localeCompare(a.date));const vr=v=>'<tr><td>'+linkPatient(v.pet)+'</td>'+td(date(v.date))+td(v.type)+'<td><span class="pill">'+(v.status==='approved'?'Zatwierdzona':'Projekt')+'</span></td></tr>';document.getElementById('recentVisits').innerHTML=table(['Pacjent','Data','Typ','Status'],visits.slice(0,5).map(vr));document.getElementById('visitsTable').innerHTML=table(['Pacjent','Data','Typ','Rozpoznanie / opis','Lekarz','Akcje'],visits.map(v=>'<tr><td>'+linkPatient(v.pet)+'</td>'+td(date(v.date))+td(v.type)+td(v.diagnosis)+td(v.vet)+'<td><button class="link" data-edit-visit="'+esc(v.id)+'">'+(v.status==='approved'?'Podgląd':'Edytuj')+'</button> '+(v.status==='approved'?'':'<button class="link" data-approve-visit="'+esc(v.id)+'">Zatwierdź</button>')+'</td></tr>'));document.getElementById('recentPatients').innerHTML=table(['Pacjent','Właściciel','PETID'],data.patients.slice(-4).reverse().map(p=>'<tr><td>'+linkPatient(p.id)+'</td>'+td(p.owner)+td(p.id)+'</tr>'));document.getElementById('activity').innerHTML=visits.slice(0,3).map(v=>'<div class="event"><div class="dot">▤</div><div><strong>Wizyta: '+esc(pname(v.pet))+'</strong><p>'+esc(v.type)+' · '+esc(v.vet)+'</p><small>'+date(v.date)+'</small></div></div>').join('')||'<p class="muted">Brak aktywności</p>';PETIDDocuments.render(data,patient);document.getElementById('vaccinationsTable').innerHTML=table(['Pacjent','Szczepienie','Wykonano','Kolejny termin'],data.vaccinations.map(v=>'<tr><td>'+linkPatient(v.pet)+'</td>'+td(v.name)+td(date(v.date))+td(date(v.next))+'</tr>'));document.getElementById('medicationsTable').innerHTML=table(['Pacjent','Lek','Dawkowanie','Status'],data.medications.map(m=>'<tr><td>'+linkPatient(m.pet)+'</td>'+td(m.name)+td(m.dose)+td(m.status)+'</tr>'));renderPatients();if(document.getElementById('patientDetail').classList.contains('active')&&window.currentPet)renderDetail(window.currentPet)}function renderPatients(){const q=document.getElementById('patientSearch').value.toLowerCase().trim(),s=document.getElementById('speciesFilter').value;const a=data.patients.filter(p=>(!s||p.species===s)&&[p.name,p.owner,p.id,p.breed].join(' ').toLowerCase().includes(q));document.getElementById('patientCards').innerHTML=a.map(p=>'<button class="petcard" data-pet="'+esc(p.id)+'"><div class="pet-icon">'+(p.species==='Kot'?'🐈':'🐕')+'</div><h3>'+esc(p.name)+'</h3><p>'+esc(p.species)+' · '+esc(p.breed||'Bez podanej rasy')+'</p><p>Właściciel: '+esc(p.owner)+'</p><small>'+esc(p.id)+' →</small></button>').join('')||'<p class="empty">Nie znaleziono pacjentów.</p>'}function renderDetail(id){const p=patient(id);if(!p)return;window.currentPet=id;document.getElementById('patientDetailContent').innerHTML='<div class="profile"><div class="panel"><div class="profile-title"><div class="pet-icon">'+(p.species==='Kot'?'🐈':'🐕')+'</div><div><h1 style="margin:0">'+esc(p.name)+'</h1><p class="muted">'+esc(p.species)+' · '+esc(p.breed)+'</p></div></div><div class="detail"><div><small>PETID</small><strong>'+esc(p.id)+'</strong></div><div><small>Właściciel</small><strong>'+esc(p.owner)+'</strong></div><div><small>Data urodzenia</small><strong>'+date(p.birth)+'</strong></div><div><small>Mikrochip</small><strong>'+esc(p.chip||'Nie podano')+'</strong></div></div></div><div class="panel"><h2>Historia pacjenta</h2><div class="timeline" style="margin-top:20px">'+(data.visits.filter(v=>v.pet===id).map(v=>'<div class="event"><div class="dot">▤</div><div><strong>'+esc(v.type)+'</strong><p>'+esc(v.diagnosis)+'</p><small>'+date(v.date)+'</small></div></div>').join('')||'<p class="muted">Brak zapisanych wizyt.</p>')+'</div><hr style="border:0;border-top:1px solid var(--line);margin:22px 0"><h2>Dokumenty i leczenie</h2><p class="muted" style="font-size:13px">Dokumenty: '+data.documents.filter(x=>x.pet===id).length+' · Szczepienia: '+data.vaccinations.filter(x=>x.pet===id).length+' · Leki: '+data.medications.filter(x=>x.pet===id).length+'</p><button class="btn primary" data-modal="visit" data-selected="'+esc(id)+'">＋ Nowa wizyta</button></div></div>'}function page(name){document.querySelectorAll('.section').forEach(x=>x.classList.toggle('active',x.id===name));document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x.dataset.page===name));document.getElementById('sidebar').classList.remove('open');window.scrollTo(0,0)}const schemas={patient:{title:'Nowy pacjent',fields:[['name','Imię zwierzęcia','text',true],['species','Gatunek','select:Pies|Kot|Inne',true],['breed','Rasa','text'],['owner','Imię i nazwisko właściciela','text',true],['birth','Data urodzenia','date'],['chip','Numer mikrochipu','text']]},visit:{title:'Nowa wizyta',fields:[['pet','Pacjent','pet',true],['date','Data wizyty','date',true],['type','Typ wizyty','select:Konsultacja|Kontrola|Szczepienie|Zabieg|Inne',true],['diagnosis','Opis / rozpoznanie','textarea',true],['vet','Lekarz','select:Jan Nowak|Anna Kowalska',true]]},document:{title:'Dodaj dokument (metadane)',fields:[['pet','Pacjent','pet',true],['name','Nazwa pliku','text',true],['type','Typ','select:Karta wizyty|Wyniki badań|Recepta|Inne',true],['date','Data dokumentu','date',true],['visitId','Powiązana wizyta (opcjonalnie)','visit'],['description','Opis / uwagi','textarea']]},vaccination:{title:'Dodaj szczepienie',fields:[['pet','Pacjent','pet',true],['name','Nazwa szczepionki','text',true],['date','Data szczepienia','date',true],['next','Kolejny termin','date']]},medication:{title:'Dodaj lek',fields:[['pet','Pacjent','pet',true],['name','Nazwa leku','text',true],['dose','Dawkowanie','text'],['status','Status','select:Aktywne|Zakończone|Anulowane',true]]}};let modalType='',editId=null;function openModal(type,selected,existingId=null){modalType=type;editId=existingId;const cfg=schemas[type];if(!cfg)return;document.getElementById('modalTitle').textContent=editId?'Edytuj '+(type==='patient'?'pacjenta':'projekt wizyty'):cfg.title;document.getElementById('dataForm').innerHTML=cfg.fields.map(([key,label,kind,req])=>{let el='';const required=req?'required':'';if(kind==='visit')el='<select name="'+key+'"'+'>'+'<option value="'+''+'"'+'>Bez powiązania</option>'+data.visits.filter(v=>v.pet===(selected||document.querySelector('#dataForm [name=pet]')?.value||data.patients[0]?.id)).map(v=>'<option value="'+esc(v.id)+'"'+'>'+esc(v.date)+' · '+esc(v.type)+'</option>').join('')+'</select>';else if(kind==='pet')el='<select name="'+key+'" '+required+'>'+data.patients.map(p=>'<option value="'+esc(p.id)+'" '+(selected===p.id?'selected':'')+'>'+esc(p.name)+' ('+esc(p.id)+')</option>').join('')+'</select>';else if(kind.startsWith('select:'))el='<select name="'+key+'">'+kind.slice(7).split('|').map(v=>'<option>'+esc(v)+'</option>').join('')+'</select>';else if(kind==='textarea')el='<textarea name="'+key+'" '+required+'></textarea>';else el='<input type="'+kind+'" name="'+key+'" '+required+' '+(kind==='date'&&key==='date'?'value="2026-10-12"':'')+'>';return '<label class="field '+(kind==='textarea'?'full':'')+'">'+label+el+'</label>'}).join('')+'<div class="form-actions"><button type="button" class="btn" id="cancelModal">Anuluj</button><button class="btn primary" type="submit">Zapisz</button></div>';if(editId){const old=data[type==='patient'?'patients':'visits'].find(r=>String(r.id)===String(editId));if(old){for(const [k,v] of Object.entries(old)){const control=document.getElementById('dataForm').elements.namedItem(k);if(control&&typeof v==='string')control.value=v;}if(type==='visit'){const petField=document.getElementById('dataForm').elements.namedItem('pet');if(petField)petField.disabled=true;}}}
+ if(type==='document'){const actions=document.querySelector('#dataForm .form-actions');actions.insertAdjacentHTML('beforebegin','<label class="field full">Załączniki (JPG, PNG, WEBP, PDF, maks. 10 MB na plik)<input type="file" id="documentFiles" accept=".jpg,.jpeg,.png,.webp,.pdf,image/jpeg,image/png,image/webp,application/pdf" multiple></label>');} if(type==='document'){const petSelect=document.getElementById('dataForm').elements.namedItem('pet');const visitSelect=document.getElementById('dataForm').elements.namedItem('visitId');const updateVisits=()=>{const chosen=visitSelect.value;visitSelect.innerHTML='<option value="">Bez powiązania</option>'+data.visits.filter(v=>v.pet===petSelect.value).map(v=>'<option value="'+esc(v.id)+'">'+esc(v.date)+' · '+esc(v.type)+'</option>').join('');if([...visitSelect.options].some(o=>o.value===chosen))visitSelect.value=chosen;};petSelect.addEventListener('change',updateVisits);updateVisits();}document.getElementById('modalWrap').classList.add('show');document.getElementById('cancelModal').onclick=closeModal}function closeModal(){document.getElementById('modalWrap').classList.remove('show')}function toast(s){const el=document.getElementById('toast');el.textContent=s;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),3000)}document.addEventListener('click',e=>{const b=e.target.closest('[data-page],[data-modal],[data-pet],[data-edit-patient],[data-edit-visit],[data-approve-visit]');if(!b)return;
+ if(b.dataset.editPatient)openModal('patient',null,b.dataset.editPatient);
+ if(b.dataset.editVisit){const v=data.visits.find(x=>String(x.id)===b.dataset.editVisit);if(v?.status==='approved'){toast('Zatwierdzona wizyta jest tylko do odczytu');return;}openModal('visit',null,b.dataset.editVisit)}
+ if(b.dataset.approveVisit){if(confirm('Zatwierdzić fikcyjną wizytę? Nie będzie można jej później edytować.')){try{PETIDStore.approveVisit(data,b.dataset.approveVisit);PETIDStore.appendAudit({action:'approve',kind:'visits',id:b.dataset.approveVisit});save();render();toast('Wizyta zatwierdzona')}catch(err){toast(err.message)}}return;}if(b.dataset.page)page(b.dataset.page);if(b.dataset.modal)openModal(b.dataset.modal,b.dataset.selected);if(b.dataset.pet){renderDetail(b.dataset.pet);page('patientDetail')}});document.getElementById('closeModal').onclick=closeModal;document.getElementById('modalWrap').addEventListener('click',e=>{if(e.target.id==='modalWrap')closeModal()});document.getElementById('dataForm').addEventListener('submit',async e=>{e.preventDefault();const x=Object.fromEntries(new FormData(e.target).entries());const files=modalType==='document'?[...(document.getElementById('documentFiles')?.files||[])]:[];try{if(files.length){await PETIDAttachments.validateBatch(files);} if(editId){const kind=modalType==='patient'?'patients':'visits';PETIDStore.update(data,kind,editId,x);PETIDStore.appendAudit({action:'update',kind,id:editId});}else if(modalType==='patient'){x.id='PET-'+crypto.randomUUID().slice(0,8).toUpperCase();PETIDStore.add(data,'patients',x);PETIDStore.appendAudit({action:'create',kind:'patients',id:x.id});}else{const added=PETIDStore.add(data,modalType==='visit'?'visits':modalType==='document'?'documents':modalType==='vaccination'?'vaccinations':'medications',x);if(modalType==='document'&&files.length){try{await PETIDAttachments.putMany(added.id,files);}catch(uploadError){data.documents=data.documents.filter(d=>String(d.id)!==String(added.id));throw uploadError;}}PETIDStore.appendAudit({action:'create',kind:modalType});}save()}catch(err){toast(err.message||'Błąd walidacji');return;}render();closeModal();toast('Zapisano dane demonstracyjne');page(modalType==='patient'?'patients':modalType==='visit'?'visits':modalType==='document'?'documents':modalType==='vaccination'?'vaccinations':'medications')});document.getElementById('patientSearch').addEventListener('input',renderPatients);document.getElementById('speciesFilter').addEventListener('change',renderPatients);document.getElementById('globalSearch').addEventListener('input',e=>{page('patients');document.getElementById('patientSearch').value=e.target.value;renderPatients()});document.getElementById('resetDemo').onclick=()=>{try{PETIDResetController.run({confirmReset:()=>confirm('Przywrócić dane demonstracyjne? Wszystkie lokalne zmiany zostaną usunięte.'),commit:()=>{const clean=PETIDStore.migrate(structuredClone(seed));PETIDDemoTransaction.commit({'petid_clinic_demo_v1':JSON.stringify(clean),'petid_demo_owner_grants_v1':null,'petid_demo_workflow_v1':null},localStorage,{allowRecoveryReset:true});PETIDStore.clearRecoveryLock();data=clean;localStorage.removeItem('petid_demo_audit_v1');document.dispatchEvent(new Event('petid:demo-reset-success'));render();PETIDAttachments.clear().then(()=>toast('Zresetowano dane i załączniki')).catch(err=>toast('Dane zresetowano, ale pliki: '+err.message));toast('Przywrócono dane demonstracyjne')},afterCommit:()=>{}})}catch(err){toast('Reset nieudany: '+err.message)}};render();if(PETIDStore.recoveryRequired()){const warning=document.getElementById('recoveryWarning');if(warning)warning.hidden=false;}
+
+</script><script>
+
+/* PETID Demo v1.0 — UI-only integration. No credentials, no real AI, no secure access. */
+(()=>{
+const $=id=>document.getElementById(id);
+const safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const keys=['reason','symptoms','diagnosis','treatment','recommendations','notes'];
+const names={reason:'Powód wizyty',symptoms:'Objawy',diagnosis:'Rozpoznanie',treatment:'Leczenie',recommendations:'Zalecenia',notes:'Uwagi'};
+const aliases={'powód':'reason','powod':'reason','cel':'reason','objawy':'symptoms','rozpoznanie':'diagnosis','diagnoza':'diagnosis','leczenie':'treatment','terapia':'treatment','zalecenia':'recommendations','uwagi':'notes'};
+let draft=null;
+function refresh(){
+ const current=$('scribePatient').value;
+ $('scribePatient').innerHTML=data.patients.map(p=>`<option value="${safe(p.id)}">${safe(p.name)} — ${safe(p.id)}</option>`).join('');
+ if(data.patients.some(p=>p.id===current))$('scribePatient').value=current;
+ const own=$('ownerSelect').value;
+ const owners=data.owners||[];
+ $('ownerSelect').innerHTML=owners.map(o=>`<option value="${safe(o.id)}">${safe(o.name)}</option>`).join('');
+ if(owners.some(o=>o.id===own))$('ownerSelect').value=own;
+ renderOwner();
+}
+function renderOwner(){
+ const owner=$('ownerSelect').value;
+ const pets=data.patients.filter(p=>PETIDStore.petOwnerIds(data,p.id).includes(owner));
+ $('ownerView').innerHTML=pets.map(p=>{
+  const visits=data.visits.filter(v=>v.pet===p.id).sort((a,b)=>b.date.localeCompare(a.date));
+  const vacc=data.vaccinations.filter(v=>v.pet===p.id);
+  const docs=data.documents.filter(d=>d.pet===p.id);
+  return `<div class="owner-pet"><h3>🐾 ${safe(p.name)} <span class="demo-label">${safe(p.id)}</span></h3><p class="muted">${safe(p.species)} · ${safe(p.breed||'Rasa nieznana')}</p><h4>Wizyty (${visits.length})</h4><ul>${visits.map(v=>`<li>${safe(v.date)} — ${safe(v.type)}: ${safe(v.diagnosis||'Bez opisu')}</li>`).join('')||'<li>Brak wizyt</li>'}</ul><h4>Szczepienia (${vacc.length})</h4><ul>${vacc.map(v=>`<li>${safe(v.name)} — ${safe(v.date)}; następny termin: ${safe(v.next||'nieustalony')}</li>`).join('')||'<li>Brak szczepień</li>'}</ul><h4>Dokumenty (${docs.length})</h4><ul>${docs.map(d=>`<li>${safe(d.name)} — ${safe(d.date)}</li>`).join('')||'<li>Brak dokumentów</li>'}</ul></div>`;
+ }).join('')||'<p class="muted">Brak zwierząt przypisanych do tego właściciela.</p>';
+}
+function parse(text){
+ const obj=Object.fromEntries(keys.map(k=>[k,'']));let section='notes';
+ for(const line of text.split(/\r?\n/)){
+  const m=line.match(/^\s*([^:]{2,30}):\s*(.*)$/);
+  if(m){const name=m[1].trim().toLocaleLowerCase('pl');if(aliases[name]){section=aliases[name];if(m[2].trim())obj[section]+=(obj[section]?'\n':'')+m[2].trim();continue;}}
+  if(line.trim())obj[section]+=(obj[section]?'\n':'')+line.trim();
+ }
+ return obj;
+}
+function showDraft(){
+ $('scribeFields').innerHTML=keys.map(k=>`<label>${names[k]}<textarea data-draft="${k}">${safe(draft[k])}</textarea></label>`).join('');
+ $('scribeStatus').textContent='Projekt gotowy do ręcznej weryfikacji. Pola można edytować.';
+}
+function currentDraft(){if(!draft)return null;return Object.fromEntries(keys.map(k=>[k,$('scribeFields').querySelector('[data-draft="'+k+'"]').value.trim()]));}
+$('scribeParse').addEventListener('click',()=>{const note=$('scribeNote').value.trim();if(!note){$('scribeStatus').textContent='Wpisz najpierw notatkę.';return;}draft=parse(note);showDraft();});
+$('scribeApprove').addEventListener('click',()=>{
+ const fields=currentDraft();if(!fields){$('scribeStatus').textContent='Najpierw uporządkuj notatkę.';return;}
+ const pet=$('scribePatient').value;if(!data.patients.some(p=>p.id===pet)){ $('scribeStatus').textContent='Wybierz pacjenta.';return;}
+ if(!Object.values(fields).some(Boolean)){ $('scribeStatus').textContent='Projekt jest pusty.';return;}
+ if(!confirm('Czy potwierdzasz ręczną weryfikację i chcesz zapisać fikcyjny wpis w demonstracji?'))return;
+ const today=new Date().toISOString().slice(0,10);
+ try{PETIDStore.add(data,'visits',{id:'SCRIBE-'+(crypto.randomUUID?crypto.randomUUID():Date.now()),pet,date:today,type:$('scribeType').value,diagnosis:fields.diagnosis||fields.reason||'Notatka z wizyty',vet:'Lekarz demonstracyjny',status:'approved',approvedAt:new Date().toISOString(),scribe:{...fields,approved:true,source:'local-rule-parser'}});save()}catch(err){$('scribeStatus').textContent=err.message;return;}render();refresh();$('scribeStatus').textContent='Zapisano fikcyjną wizytę. Jest widoczna w historii pacjenta i w panelu właściciela.';toast('Wizyta demonstracyjna zapisana');
+});
+$('scribeCopy').addEventListener('click',async()=>{const obj=currentDraft();if(!obj){$('scribeStatus').textContent='Najpierw przygotuj projekt.';return;}const text=JSON.stringify({pet_id:$('scribePatient').value,fields:obj,status:'draft',source:'local-rule-parser'},null,2);try{await navigator.clipboard.writeText(text);$('scribeStatus').textContent='Skopiowano JSON.'}catch{$('scribeStatus').textContent='Przeglądarka zablokowała kopiowanie. Otwórz stronę przez lokalny serwer.'}});
+$('ownerSelect').addEventListener('change',renderOwner);
+// Observe data updates made by the existing dashboard (including modal forms and reset).
+const oldRender=render;render=function(){oldRender();refresh()};
+refresh();
+})();
+
+</script><script>
+/* Local-only demonstration of explicit, time-limited sharing. Not security or legal consent. */
+(function(root){'use strict';
+const KEY='petid_demo_owner_grants_v1';const DEFAULT_CLINIC='CLINIC-DEMO-001';
+function active(g,now=new Date()){return !!g && g.status==='active' && Number.isFinite(Date.parse(g.expiresAt)) && Date.parse(g.expiresAt)>now.getTime()}
+function create(grants,{pet,ownerId,clinicId=DEFAULT_CLINIC,days=7},now=new Date()){
+ if(!pet||!ownerId||!clinicId||!Number.isInteger(days)||days<1||days>30)throw Error('Niepoprawne dane udostępnienia.');
+ if(grants.some(g=>g.pet===pet&&g.ownerId===ownerId&&g.clinicId===clinicId&&active(g,now)))throw Error('Dostęp dla tej kliniki jest już aktywny.');
+ const item={id:'grant-'+(root.crypto?.randomUUID?.()||Date.now()+'-'+Math.random().toString(36).slice(2)),pet,ownerId,clinicId,scope:'approved-visits-and-document-metadata',status:'active',createdAt:now.toISOString(),expiresAt:new Date(now.getTime()+days*86400000).toISOString()};grants.push(item);return item;
+}
+function revoke(grants,id,now=new Date()){const g=grants.find(g=>g.id===id);if(!g)throw Error('Nie znaleziono udostępnienia.');if(g.status!=='active')throw Error('Dostęp został już cofnięty.');g.status='revoked';g.revokedAt=now.toISOString();return g}
+function visible(state,grant,now=new Date()){if(!active(grant,now)||!state.petOwners?.some(x=>x.petId===grant.pet&&x.ownerId===grant.ownerId)||!state.clinics?.some(x=>x.id===grant.clinicId))return {visits:[],documents:[]};return {visits:state.visits.filter(v=>v.pet===grant.pet&&v.status==='approved'),documents:state.documents.filter(d=>d.pet===grant.pet).map(d=>({id:d.id,name:d.name,type:d.type,date:d.date,description:d.description||''}))}}
+function load(){try{const x=JSON.parse(root.localStorage.getItem(KEY)||'[]');return Array.isArray(x)?x.filter(g=>g.ownerId&&g.clinicId):[]}catch{return []}}
+function save(x){root.localStorage.setItem(KEY,JSON.stringify(x))}
+const api={active,create,revoke,visible,load,save,DEFAULT_CLINIC};root.PETIDOwnerGrants=api;if(typeof module!=='undefined'&&module.exports)module.exports=api;
+})(typeof window!=='undefined'?window:globalThis);
+
+</script><script>
+/* PETID v1.6: owner UX and local grant simulation, not authorization. */
+(function(){'use strict';
+const $=id=>document.getElementById(id);const e=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=s=>s?new Date(s.length===10?s+'T12:00:00':s).toLocaleDateString('pl-PL'):'—';
+function renderOwner(){
+ const ownerId=$('ownerSelect').value;const pets=data.patients.filter(p=>PETIDStore.petOwnerIds(data,p.id).includes(ownerId));const grants=PETIDOwnerGrants.load();
+ $('ownerView').innerHTML=pets.map(p=>{
+  const visits=data.visits.filter(v=>v.pet===p.id&&v.status==='approved').sort((a,b)=>b.date.localeCompare(a.date));
+  const drafts=data.visits.filter(v=>v.pet===p.id&&v.status!=='approved').length;
+  const vacc=data.vaccinations.filter(v=>v.pet===p.id).sort((a,b)=>b.date.localeCompare(a.date));
+  const docs=data.documents.filter(d=>d.pet===p.id).sort((a,b)=>b.date.localeCompare(a.date));
+  const meds=data.medications.filter(m=>m.pet===p.id);
+  const gs=grants.filter(g=>g.pet===p.id&&g.ownerId===ownerId);
+  const list=(arr,cb,empty='Brak danych')=>arr.length?arr.map(cb).join(''):`<li class="muted">${empty}</li>`;
+  return `<article class="owner-pet"><div class="owner-pet-header"><div><h2>🐾 ${e(p.name)} <span class="demo-label">${e(p.id)}</span></h2><p class="muted">${e(p.species)} · ${e(p.breed||'Rasa nieznana')} · ur. ${fmt(p.birth)}</p><p class="muted">Mikrochip: ${e(p.chip||'nie podano')}</p></div><span class="clinical-tag">Profil zwierzęcia</span></div>
+  <div class="owner-sections"><section><h3>Wizyty zatwierdzone (${visits.length})</h3><ul>${list(visits,v=>`<li><strong>${fmt(v.date)}</strong> — ${e(v.type)}: ${e(v.diagnosis)}</li>`)}</ul>${drafts?`<p class="muted">${drafts} projekt(y) wizyt niewidoczne w historii właściciela.</p>`:''}</section>
+  <section><h3>Szczepienia (${vacc.length})</h3><ul>${list(vacc,v=>`<li>${e(v.name)} — ${fmt(v.date)} · następny termin: ${fmt(v.next)}</li>`)}</ul></section>
+  <section><h3>Dokumenty (${docs.length})</h3><ul>${list(docs,d=>`<li>${e(d.name)} — ${fmt(d.date)} <small>(${e(d.type)})</small></li>`)}</ul><p class="muted">Wyświetlamy tylko metadane, nie zawartość plików.</p></section>
+  <section><h3>Leczenie (${meds.length})</h3><ul>${list(meds,m=>`<li>${e(m.name)} · ${e(m.dose||'brak dawkowania')} · ${e(m.status)}</li>`)}</ul></section></div>
+  <div class="owner-share"><h3>Udostępnianie klinice — symulacja</h3><p class="muted">Zakres: zatwierdzone wizyty i metadane dokumentów. Maksymalnie 30 dni. Nie udostępnia rzeczywistych danych.</p><div class="owner-share-actions"><label>Ważność <select data-share-days="${e(p.id)}"><option value="1">1 dzień</option><option value="7" selected>7 dni</option><option value="30">30 dni</option></select></label><button class="btn primary" data-share-pet="${e(p.id)}">Udziel dostępu demo</button></div>
+  <div class="grant-list">${gs.length?gs.map(g=>`<div class="grant-row"><span>${PETIDOwnerGrants.active(g)?'🟢 Aktywny':g.status==='revoked'?'⚪ Cofnięty':'⌛ Wygasły'} · ${e(data.clinics.find(c=>c.id===g.clinicId)?.name||g.clinicId)} · do ${fmt(g.expiresAt)}</span>${PETIDOwnerGrants.active(g)?`<button class="btn" data-revoke-grant="${e(g.id)}">Cofnij</button>`:''}</div>`).join(''):'<p class="muted">Nie udzielono dostępu.</p>'}</div></div></article>`;
+ }).join('')||'<p class="muted">Brak zwierząt dla tego właściciela.</p>';
+ const active=grants.filter(g=>g.ownerId===ownerId&&PETIDOwnerGrants.active(g));
+ $('ownerGrantPreview').innerHTML=active.length?active.map(g=>{const x=PETIDOwnerGrants.visible(data,g);return `<div class="grant-preview"><strong>${e(data.patients.find(p=>p.id===g.pet)?.name||g.pet)}</strong> · ${e(data.clinics.find(c=>c.id===g.clinicId)?.name||g.clinicId)}<p class="muted">Ważny do ${fmt(g.expiresAt)}</p><p>Zatwierdzone wizyty: ${x.visits.length} · Metadane dokumentów: ${x.documents.length}</p><ul>${list(x.visits,v=>`<li>${fmt(v.date)} — ${e(v.type)}: ${e(v.diagnosis)}</li>`,'Brak zatwierdzonych wizyt')}</ul></div>`}).join(''):'<p class="muted">Brak aktywnych udostępnień.</p>';
+}
+$('ownerView').addEventListener('click',event=>{
+ const share=event.target.closest('[data-share-pet]');const revoke=event.target.closest('[data-revoke-grant]');if(!share&&!revoke)return;
+ const ownerId=$('ownerSelect').value;const grants=PETIDOwnerGrants.load();try{
+ if(share){const pet=share.dataset.sharePet;if(!data.patients.some(p=>p.id===pet&&PETIDStore.petOwnerIds(data,pet).includes(ownerId)))throw Error('Zwierzę nie jest przypisane do wybranego właściciela.');const days=Number($('ownerView').querySelector('[data-share-days="'+pet+'"]').value);PETIDOwnerGrants.create(grants,{pet,ownerId,clinicId:PETIDOwnerGrants.DEFAULT_CLINIC,days});}
+ else {const g=grants.find(g=>g.id===revoke.dataset.revokeGrant);if(!g||g.ownerId!==ownerId)throw Error('Nieprawidłowe udostępnienie.');PETIDOwnerGrants.revoke(grants,g.id)}
+ PETIDOwnerGrants.save(grants);renderOwner();
+ }catch(err){alert(err.message)}
+});
+// Existing refresh() uses the renderOwner identifier from extensions.js, so patch it explicitly.
+window.renderOwner=renderOwner;
+$('ownerSelect').addEventListener('change',renderOwner);
+const priorRender=render;render=function(){priorRender();renderOwner()};
+renderOwner();
+})();
+
+</script><script>
+/* PETID v1.4: unified, read-only clinical timeline + append-only demo corrections. */
+(()=>{
+const $=id=>document.getElementById(id);
+const e=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=s=>{if(!s)return 'Nie podano';const d=new Date(/^\d{4}-\d{2}-\d{2}$/.test(s)?s+'T12:00:00':s);return Number.isNaN(d.getTime())?e(s):d.toLocaleDateString('pl-PL')};
+const order=(a,b)=>String(b.when).localeCompare(String(a.when))||String(a.kind).localeCompare(String(b.kind));
+function eventsFor(state,id){
+ const out=[];
+ for(const v of state.visits.filter(x=>x.pet===id)){
+  out.push({kind:'visit',when:v.date,title:'Wizyta: '+v.type,detail:v.diagnosis||'Brak opisu',extra:'Lekarz: '+(v.vet||'Nie podano')+' · '+(v.status==='approved'?'Zatwierdzona':'Projekt'),id:v.id,approved:v.status==='approved'});
+  for(const c of v.corrections||[])out.push({kind:'correction',when:c.at,title:'Korekta zatwierdzonej wizyty',detail:c.updated,extra:'Powód: '+c.reason+' · Poprzednia treść: '+c.previous,visitId:v.id});
+ }
+ for(const d of state.documents.filter(x=>x.pet===id))out.push({kind:'document',when:d.date,title:'Dokument: '+d.name,detail:d.type||'Bez kategorii',extra:'Metadane — plik nie jest przechowywany'});
+ for(const v of state.vaccinations.filter(x=>x.pet===id))out.push({kind:'vaccination',when:v.date,title:'Szczepienie: '+v.name,detail:'Kolejny termin: '+(v.next?fmt(v.next):'nieustalony'),extra:''});
+ for(const m of state.medications.filter(x=>x.pet===id))out.push({kind:'medication',when:m.date||'',title:'Lek: '+m.name,detail:m.dose||'Brak dawkowania',extra:'Status: '+(m.status||'Nieznany')});
+ return out.sort(order);
+}
+function timeline(id){
+ const p=data.patients.find(x=>x.id===id);if(!p)return;
+ window.currentPet=id;
+ const items=eventsFor(data,id);
+ $('patientDetailContent').innerHTML=`<div class="panel"><div class="profile-title"><div class="pet-icon">${p.species==='Kot'?'🐈':'🐕'}</div><div><h1>${e(p.name)}</h1><p class="muted">${e(p.species)} · ${e(p.breed||'Rasa nieznana')} · ${e(p.id)}</p></div></div><div class="detail"><div><small>Właściciel</small><strong>${e(p.owner)}</strong></div><div><small>Urodzenie</small><strong>${fmt(p.birth)}</strong></div><div><small>Mikrochip</small><strong>${e(p.chip||'Brak')}</strong></div></div><div class="detail-actions"><button class="btn" data-edit-patient="${e(id)}">Edytuj dane</button><button class="btn primary" data-modal="visit" data-selected="${e(id)}">＋ Nowa wizyta</button></div></div><div class="panel"><div class="panel-head"><div><h2>Historia medyczna</h2><p class="muted">Wizyty, korekty, dokumenty, szczepienia i leki w jednej osi czasu</p></div><span class="demo-label">${items.length} zdarzeń</span></div><div class="timeline clinical-timeline">${items.length?items.map(x=>`<article class="clinical-event"><div class="clinical-meta"><span class="clinical-tag">${({visit:'Wizyta',correction:'Korekta',document:'Dokument',vaccination:'Szczepienie',medication:'Lek'})[x.kind]}</span><small>${x.when?fmt(x.when):'Bez daty'}</small></div><h3>${e(x.title)}</h3><p>${e(x.detail)}</p><small>${e(x.extra)}</small>${x.kind==='visit'&&x.approved?`<div><button class="btn correction-btn" data-correct-visit="${e(x.id)}">Zgłoś korektę wpisu</button></div>`:''}</article>`).join(''):'<p class="muted">Brak zdarzeń.</p>'}</div></div>`;
+}
+renderDetail=timeline;
+// Use event delegation; preserve existing dashboard click handler.
+document.addEventListener('click',ev=>{
+ const b=ev.target.closest('[data-correct-visit]');if(!b)return;
+ const id=b.dataset.correctVisit;const v=data.visits.find(x=>String(x.id)===id);if(!v)return;
+ const reason=prompt('Powód korekty (minimum 10 znaków):');if(reason===null)return;
+ const previous=(v.corrections||[]).at(-1)?.updated||v.diagnosis;
+ const updated=prompt('Poprawiona treść (oryginał pozostanie zachowany):',previous);if(updated===null)return;
+ try{PETIDStore.correctVisit(data,id,reason,updated);save();render();toast('Dodano korektę demonstracyjną');}
+ catch(err){alert(err.message)}
+});
+// A direct export for browser smoke testing; no real clinical data.
+window.PETIDTimeline={eventsFor};
+})();
+</script><script>
+/* Deterministic demo workflow; no real authorization. */
+(function(root){'use strict';
+const PREFIX='PETID-FLOW-';
+const steps=[
+ ['patient','Utwórz fikcyjnego pacjenta'],['visit','Utwórz projekt wizyty'],
+ ['document','Dodaj dokument do wizyty'],['approve','Zatwierdź wizytę'],
+ ['grant','Udostępnij historię klinice na 7 dni'],['revoke','Cofnij dostęp']
+];
+function inspect(state,grants,run,now=new Date()){
+ if(!run)return {statuses:steps.map(()=>false),detail:'Nie rozpoczęto scenariusza.'};
+ const pet=state.patients.find(p=>p.id===run.petId);
+ const visit=state.visits.find(v=>String(v.id)===String(run.visitId)&&v.pet===run.petId);
+ const doc=state.documents.find(d=>String(d.id)===String(run.documentId)&&d.pet===run.petId&&String(d.visitId)===String(run.visitId));
+ const grant=grants.find(g=>g.id===run.grantId&&g.pet===run.petId&&g.ownerId===pet?.ownerId&&g.clinicId==='CLINIC-DEMO-001');
+ const s=[!!pet,!!visit,!!doc,visit?.status==='approved',!!grant&&!!run.grantCreatedAt,grant?.status==='revoked'];
+ return {statuses:s,complete:s.every(Boolean),pet,visit,doc,grant,active:!!grant&&root.PETIDOwnerGrants.active(grant,now),detail:s.every(Boolean)?'Wszystkie etapy ukończone. Dostęp cofnięty.':'Kontynuuj następny etap.'};
+}
+function perform(state,grants,run,index,store=root.PETIDStore,ownerGrants=root.PETIDOwnerGrants){
+ const result=inspect(state,grants,run);
+ if(index<0||index>=steps.length)throw Error('Nieprawidłowy etap.');
+ if(index>0&&!run)throw Error('Najpierw rozpocznij scenariusz.');
+ if(index>0&&!result.statuses.slice(0,index).every(Boolean))throw Error('Najpierw ukończ wcześniejsze etapy.');
+ if(result.statuses[index])throw Error('Ten etap już wykonano.');
+ if(index===0){
+  const id=PREFIX+(root.crypto?.randomUUID?.()||Date.now()+'-'+Math.random().toString(36).slice(2));
+  const p=store.add(state,'patients',{id,name:'Demo Pacjent E2E',species:'Pies',breed:'Mieszaniec',owner:'Właściciel Testowy '+id.slice(-7),birth:'2021-02-10',chip:''});
+  run={petId:p.id,createdAt:new Date().toISOString()};
+ }else if(index===1){
+  const v=store.add(state,'visits',{pet:run.petId,date:new Date().toISOString().slice(0,10),type:'Konsultacja',diagnosis:'Fikcyjna wizyta testowa — bez danych medycznych',vet:'Lekarz demonstracyjny',status:'draft'});run.visitId=v.id;
+ }else if(index===2){
+  const d=store.add(state,'documents',{pet:run.petId,visitId:run.visitId,name:'Przykładowy dokument E2E',type:'Inne',date:new Date().toISOString().slice(0,10),description:'Metadane dokumentu demonstracyjnego; bez pliku'});run.documentId=d.id;
+ }else if(index===3){store.approveVisit(state,run.visitId);
+ }else if(index===4){
+  const pet=state.patients.find(p=>p.id===run.petId);
+  const g=ownerGrants.create(grants,{pet:run.petId,ownerId:pet.ownerId,clinicId:'CLINIC-DEMO-001',days:7});
+  const visible=ownerGrants.visible(state,g);
+  if(!visible.visits.some(v=>String(v.id)===String(run.visitId))||!visible.documents.some(d=>String(d.id)===String(run.documentId)))throw Error('Udostępnienie nie obejmuje zatwierdzonej wizyty i dokumentu.');
+  run.grantId=g.id;run.grantCreatedAt=g.createdAt;
+ }else if(index===5){ownerGrants.revoke(grants,run.grantId);
+  if(ownerGrants.visible(state,grants.find(g=>g.id===run.grantId)).visits.length)throw Error('Cofnięcie dostępu nie ukryło danych.');
+ }
+ return run;
+}
+const api={steps,inspect,perform,PREFIX};root.PETIDWorkflow=api;if(typeof module!=='undefined'&&module.exports)module.exports=api;
+})(typeof window!=='undefined'?window:globalThis);
+
+</script><script>
+/* Browser-only walkthrough; uses the same data and grants as the main application. */
+(function(){'use strict';
+const KEY='petid_demo_workflow_v1';const $=id=>document.getElementById(id);
+let run;try{run=JSON.parse(localStorage.getItem(KEY)||'null')}catch{run=null}
+function draw(){
+ const grants=PETIDOwnerGrants.load(),result=PETIDWorkflow.inspect(data,grants,run);
+ const passed=result.statuses.filter(Boolean).length;
+ $('workflowSummary').innerHTML='<p><strong>'+passed+' / 6 etapów zaliczonych</strong> · '+(result.complete?'Scenariusz ukończony':'Scenariusz w toku')+'</p>';
+ $('workflowSteps').innerHTML=PETIDWorkflow.steps.map(([key,label],i)=>'<div class="workflow-step"><span class="workflow-status">'+(result.statuses[i]?'✓':'○')+'</span><div><strong>'+(i+1)+'. '+label+'</strong><p class="muted">'+(result.statuses[i]?'Potwierdzono na podstawie zapisanych rekordów.':'Oczekuje na wykonanie.')+'</p></div><button type="button" class="btn '+(i===passed?'primary':'')+'" data-workflow-step="'+i+'" '+(result.statuses[i]||i!==passed?'disabled':'')+'>'+(result.statuses[i]?'Wykonano':'Wykonaj')+'</button></div>').join('');
+ const checks=[['Pacjent istnieje',result.statuses[0]],['Projekt wizyty istnieje',result.statuses[1]],['Dokument powiązany z wizytą',result.statuses[2]],['Wizyta zatwierdzona',result.statuses[3]],['Udostępnienie z właściwym ownerId/clinicId',result.statuses[4]],['Dostęp cofnięty',result.statuses[5]],['Po cofnięciu nie zwraca zatwierdzonych wizyt',result.statuses[5]&&PETIDOwnerGrants.visible(data,result.grant).visits.length===0]];
+ $('workflowDiagnostics').innerHTML='<ul class="workflow-diagnostics">'+checks.map(([label,ok])=>'<li><span>'+(ok?'✓':'○')+'</span> '+label+'</li>').join('')+'</ul>';
+}
+$('workflowSteps').addEventListener('click',event=>{const btn=event.target.closest('[data-workflow-step]');if(!btn)return;const i=Number(btn.dataset.workflowStep);try{
+ const stagedData=structuredClone(data),stagedGrants=structuredClone(PETIDOwnerGrants.load());
+ const stagedRun=PETIDWorkflow.perform(stagedData,stagedGrants,structuredClone(run),i);
+ PETIDDemoTransaction.commit({'petid_clinic_demo_v1':JSON.stringify(stagedData),'petid_demo_owner_grants_v1':JSON.stringify(stagedGrants),'petid_demo_workflow_v1':JSON.stringify(stagedRun)});
+ data=stagedData;run=stagedRun;
+ PETIDStore.appendAudit({action:'demo_workflow_step',step:i+1,pet:run.petId});render();draw();
+ }catch(err){alert('Nie udało się wykonać kroku: '+err.message)} });
+$('workflowReset').addEventListener('click',()=>{if(!confirm('Rozpocząć nowy scenariusz? Dotychczasowe rekordy testowe pozostaną w kartotekach.'))return;run=null;localStorage.removeItem(KEY);draw()});
+// Global demo reset also invalidates the workflow run.
+document.addEventListener('petid:demo-reset-success',()=>{run=null;draw()});
+const priorRender=render;render=function(){priorRender();draw()};draw();
+})();
+
+</script><script>
+(function(root){'use strict';
+const KEYS=['reason','symptoms','examination','diagnosis','treatment','recommendations','notes'];
+const MAP={'powód':'reason','powod':'reason','wywiad':'reason','objawy':'symptoms','badanie':'examination','rozpoznanie':'diagnosis','diagnoza':'diagnosis','leczenie':'treatment','zalecenia':'recommendations','uwagi':'notes'};
+function parseNote(text){const out=Object.fromEntries(KEYS.map(k=>[k,'']));let current='notes';for(const line of String(text||'').split(/\r?\n/)){const m=line.match(/^\s*([^:]{2,40}):\s*(.*)$/);if(m&&MAP[m[1].trim().toLocaleLowerCase('pl')]){current=MAP[m[1].trim().toLocaleLowerCase('pl')];if(m[2].trim())out[current]+=(out[current]?'\n':'')+m[2].trim();}else if(line.trim())out[current]+=(out[current]?'\n':'')+line.trim();}return out;}
+function parseOcrText(text){const lines=String(text||'').split(/\r?\n/);const fields={};const unknown=[];for(const l of lines){const m=l.match(/^\s*([^:]{2,40}):\s*(.+)$/);if(m){const k=m[1].trim().toLocaleLowerCase('pl');if(['dokument','data','pacjent','uwagi','wynik','lekarz'].includes(k))fields[k]=m[2].trim();else unknown.push(l.trim());}else if(l.trim())unknown.push(l.trim());}return {fields,unclassified:unknown,mode:'manual-text-simulation'};}
+function validFile(file){if(!file)return {ok:true};const okTypes=['image/jpeg','image/png','image/webp','application/pdf'];const ext=/\.(jpe?g|png|webp|pdf)$/i.test(file.name||'');return {ok:okTypes.includes(file.type)&&ext&&file.size<=10*1024*1024&&file.size>0,error:'Obsługiwane: JPG, PNG, WEBP, PDF do 10 MB.'};}
+const api={KEYS,parseNote,parseOcrText,validFile};root.PETIDAIDemo=api;if(typeof module!=='undefined'&&module.exports)module.exports=api;
+})(typeof window!=='undefined'?window:globalThis);
+
+</script><script>
+(()=>{'use strict';const $=id=>document.getElementById(id),api=PETIDAIDemo;const names={reason:'Powód / wywiad',symptoms:'Objawy',examination:'Badanie',diagnosis:'Rozpoznanie',treatment:'Leczenie',recommendations:'Zalecenia',notes:'Uwagi'};const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));let current=null;function sync(){const v=$('aiPatient').value;$('aiPatient').innerHTML=(data.patients||[]).map(p=>`<option value="${esc(p.id)}">${esc(p.name)} — ${esc(p.id)}</option>`).join('');if(data.patients.some(p=>p.id===v))$('aiPatient').value=v;}
+const oldRender=render;render=function(){oldRender();sync();};sync();$('aiExample').onclick=()=>{$('aiNote').value='Powód: kontrola po zabiegu\nObjawy: brak nowych objawów (dane fikcyjne)\nBadanie: opis przykładowy\nRozpoznanie: wymaga oceny lekarza\nZalecenia: kontrola według decyzji lekarza';};
+$('aiGenerate').onclick=()=>{const t=$('aiNote').value.trim();if(!t){$('aiStatus').textContent='Wpisz notatkę.';return;}current=api.parseNote(t);$('aiDraft').innerHTML=api.KEYS.map(k=>`<label class="field">${names[k]}<textarea data-ai-field="${k}" rows="2">${esc(current[k])}</textarea></label>`).join('');$('aiVerified').checked=false;$('aiApprove').disabled=true;$('aiStatus').textContent='Projekt przygotowany regułami. Sprawdź i popraw każde pole.';};
+$('aiVerified').onchange=()=>{$('aiApprove').disabled=!current||!$('aiVerified').checked;};
+$('aiApprove').onclick=()=>{if(!current||!$('aiVerified').checked)return;const pet=$('aiPatient').value;if(!data.patients.some(p=>p.id===pet)){ $('aiStatus').textContent='Nie wybrano poprawnego pacjenta.';return;}const fields=Object.fromEntries(api.KEYS.map(k=>[k,$('aiDraft').querySelector('[data-ai-field="'+k+'"]').value.trim()]));if(!Object.values(fields).some(Boolean)){$('aiStatus').textContent='Projekt jest pusty.';return;}if(!confirm('Potwierdzasz ręczną weryfikację przez lekarza i zapis fikcyjnej wizyty?'))return;try{PETIDStore.add(data,'visits',{id:'AI-DEMO-'+(globalThis.crypto?.randomUUID?.()||Date.now()),pet,date:new Date().toISOString().slice(0,10),type:'Konsultacja',diagnosis:fields.diagnosis||fields.reason||'Wpis demonstracyjny',vet:'Lekarz demonstracyjny',status:'approved',approvedAt:new Date().toISOString(),scribe:{...fields,approved:true,source:'rule-based-demo-v1.8'}});save();render();current=null;$('aiVerified').checked=false;$('aiApprove').disabled=true;$('aiStatus').textContent='Zapisano zatwierdzoną wizytę demonstracyjną.';}catch(e){$('aiStatus').textContent='Błąd zapisu: '+e.message;}};
+$('ocrFile').onchange=()=>{const f=$('ocrFile').files[0],v=api.validFile(f);$('ocrFileInfo').textContent=!f?'Nie wybrano pliku.':v.ok?`Wybrano ${f.name} (${Math.round(f.size/1024)} KB). Nie odczytujemy zawartości.`:v.error;};
+$('ocrExample').onclick=()=>{$('ocrSource').value='Dokument: Wynik badania — przykład\nData: 2026-10-01\nPacjent: Rex\nWynik: fikcyjny wynik laboratoryjny\nUwagi: do weryfikacji lekarza';};
+$('ocrAnalyze').onclick=()=>{const f=$('ocrFile').files[0],v=api.validFile(f);if(!v.ok){$('ocrResult').textContent=v.error;return;}const text=$('ocrSource').value.trim();if(!text){$('ocrResult').textContent='Wprowadź tekst źródłowy lub wybierz „Wstaw fikcyjny dokument”. Nie wykonujemy OCR pliku.';return;}const r=api.parseOcrText(text);$('ocrResult').innerHTML='<strong>Symulowany odczyt — nie OCR</strong>'+Object.entries(r.fields).map(([k,v])=>`<p><b>${esc(k)}:</b> ${esc(v)}</p>`).join('')+(r.unclassified.length?`<p>Inne: ${esc(r.unclassified.join(' | '))}</p>`:'')+'<p class="muted">Sprawdź ręcznie. Brak automatycznego zapisu.</p>';};
+})();
+</script></body></html>
