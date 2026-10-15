@@ -16,6 +16,7 @@ Otwórz `http://127.0.0.1:4173`.
 
 ## Przepływy demonstracyjne
 
+- Siedem stron informacyjnych: start, o PETID, dla klinik, dla opiekunów, jak działa, pilotaż oraz kontakt/FAQ.
 - Przełączanie między stroną publiczną, panelem kliniki, opiekuna i administratora platformy.
 - Rejestracja pacjenta oraz karta pacjenta.
 - Tworzenie szkicu wizyty, podpisanie przez symulowane konto lekarza i dodanie niezmiennej korekty.
@@ -23,6 +24,7 @@ Otwórz `http://127.0.0.1:4173`.
 - Rejestrowanie szczepień, terminów oraz wpisów leczenia.
 - Złożenie lokalnego wniosku opiekuna; wniosek nie udostępnia automatycznie żadnych wpisów.
 - Lokalne zaproszenie do zespołu, eksport danych JSON i przywrócenie zestawu demo.
+- Formularz testowy nie wysyła ani nie zapisuje wartości pól; rejestruje lokalnie wyłącznie fakt testu.
 - Kopia uszkodzonego lokalnego zapisu pod osobnym kluczem odzyskiwania; blokada zwykłych zapisów do czasu resetu.
 
 ## Granice prototypu
