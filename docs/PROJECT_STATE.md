@@ -1,34 +1,38 @@
 # PETID Project State
 
 **Last updated:** 2026-10-15  
-**Current phase:** Repository bootstrap and source discovery
+**Current phase:** Source recovery and preliminary audit
 
 ## Verified facts
 
 - The GitHub repository is public and uses the `main` branch.
-- The repository was empty before this bootstrap.
-- The repository now contains the README and five project documents under `docs/`, including Master Specification v4.0.
-- No application source, test suite, database schema, or deployment configuration is present in this repository.
-- No application has been run and no tests have been executed.
+- It was empty before project documentation was added.
+- It now contains the v4.0 master specification, project tracking documents, and an archived standalone v1.8 HTML demo.
+- The archived snapshot is not the v1.8.5 package or the modular v1.10 source tree.
+- All 14 embedded scripts in the archived snapshot pass Node syntax checks.
+- A Node harness reproduced a data-recovery issue documented in `docs/AUDIT_REPORT.md`.
+- No browser, UI, cross-browser, or E2E tests have been run.
+- The repository has no backend, database schema, migrations, or deployment configuration.
 
 ## Current status
 
 | Component | Status |
 |---|---|
-| Product and technical specification | Available as `docs/MASTER_SPEC_v4.0.md` |
-| Repository inventory | Verified |
-| Audit report and project tracking docs | Available under `docs/` |
-| Prior prototype source | Not found here; location unknown |
-| Application implementation | Not present |
-| Test results | None |
-| Production readiness | Not assessed |
+| Master specification | Available as `docs/MASTER_SPEC_v4.0.md` |
+| v1.8 standalone demo | Archived for audit; preliminary static review complete |
+| v1.8.5 source | Not recovered |
+| Modular v1.10 source | Incomplete; shell and audit notes found, referenced modules missing |
+| Backend and production access controls | Not present |
+| Tests | Syntax checks and one focused Node harness only |
+| Production readiness | Not ready |
 
 ## Blockers
 
-1. The source for PETID v1.8.5 / v1.10 is not in this repository.
-2. Existing application behavior cannot be verified until its source is found.
-3. Product and architecture decisions marked proposed or open in v4.0 remain unresolved.
+1. The complete v1.8.5 package and v1.10 source tree are not in this repository.
+2. Browser behavior and cross-browser flows remain unverified.
+3. The archived demo uses local browser storage and simulated access grants, so it cannot handle real medical or personal data.
+4. Open product and architecture decisions in v4.0 still need resolution.
 
 ## Next action
 
-Locate the earlier PETID source files and related project documentation. Import them into a reviewed branch or provide the source archive for inspection. If the earlier source cannot be recovered, record that decision before creating a new application baseline.
+Recover the complete v1.8.5 and v1.10 artifacts, including tests, then inventory and run them according to their original instructions. Keep the v1.8 snapshot as historical audit evidence; do not use it as the new application baseline without an explicit baseline decision.
