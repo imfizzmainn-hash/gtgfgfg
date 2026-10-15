@@ -4,12 +4,14 @@
 
 - [ ] Recover the complete v1.8.5 package, including its legacy directory.
 - [ ] Recover the complete v1.10 source tree (`js/`, `css/`, and `tests/`).
-- [x] Archive the recovered standalone v1.8 HTML snapshot as historical audit material.
-- [x] Run syntax checks on the 14 inline scripts in that snapshot.
-- [x] Reproduce the malformed-localStorage recovery issue with a Node harness.
-- [ ] Run the complete available prototypes using their original instructions.
+- [x] Archive the recovered standalone v1.8 HTML snapshot unchanged.
+- [x] Run syntax checks on the 14 inline scripts in the workbench copy.
+- [x] Reproduce the malformed-localStorage recovery issue.
+- [x] Add a separate recovery workbench and 3 Node regression tests.
+- [ ] Verify the workbench warning and reset flow in a browser.
+- [ ] Run recovered prototypes using their original instructions.
 - [ ] Map routes and flows to verified, demo-only, missing, or broken states.
-- [ ] Compare the complete source against Master Specification v4.0.
+- [ ] Compare complete source against Master Specification v4.0.
 - [ ] Decide which version, if any, is a safe development baseline.
 
 ## P1 — after source and product gates
@@ -39,10 +41,8 @@
 
 ### SOURCE-01 — Recover and audit prior source
 
-**Status:** In progress; preliminary review completed for one standalone v1.8 snapshot.
+**Status:** In progress; preliminary v1.8 audit and separate recovery workbench completed.
 
-**Completed:** archived the snapshot; syntax-checked its 14 inline scripts; reproduced one P2 local-data recovery issue.
-
-**Remaining:** recover v1.8.5 and v1.10 packages; run their original instructions and tests; audit routes and flows; make a documented baseline decision.
+**Remaining:** browser-test the workbench; recover v1.8.5 and v1.10 packages; run their instructions and tests; audit routes and flows; make a documented baseline decision.
 
 **Out of scope:** creating replacement application code before the source audit and baseline decision.
