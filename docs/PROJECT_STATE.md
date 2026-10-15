@@ -9,9 +9,9 @@
 - It contains the v4.0 master specification, project tracking documents, the unchanged archived v1.8 snapshot, and recovered v1.9/v1.10 notes.
 - A separate v1.8 recovery workbench contains a candidate guard for malformed local data and a persistent UI warning.
 - All 14 inline scripts in the workbench pass Node syntax checks.
-- The workbench recovery test suite passes: 3 tests.
+- The workbench recovery test suite passes: 4 tests.
 - The archive was verified byte-identical to the recovered v1.8 source.
-- No browser, UI, cross-browser, or E2E tests have been run.
+- No browser, UI, cross-browser, or E2E tests have been run; Chromium is unavailable in the environment.
 - No backend, database schema, migrations, or deployment configuration is present.
 
 ## Current status
