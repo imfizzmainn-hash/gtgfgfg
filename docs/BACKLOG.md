@@ -1,20 +1,22 @@
 # PETID Backlog
 
-## P0 — unblock a trustworthy audit
+## P0 — establish a trustworthy baseline
 
-- [ ] Locate the source for PETID v1.8.5 and v1.10.
-- [ ] Inventory existing code, assets, documentation, and Git history.
-- [ ] Run the existing prototype using its own instructions.
-- [ ] Map screens and routes to verified, demo-only, missing, or broken states.
-- [ ] Record the exact commands and results of available tests.
-- [ ] Compare the source against Master Specification v4.0.
-- [ ] Preserve a known-good baseline before making application changes.
+- [ ] Recover the complete v1.8.5 package, including its legacy directory.
+- [ ] Recover the complete v1.10 source tree (`js/`, `css/`, and `tests/`).
+- [x] Archive the recovered standalone v1.8 HTML snapshot as historical audit material.
+- [x] Run syntax checks on the 14 inline scripts in that snapshot.
+- [x] Reproduce the malformed-localStorage recovery issue with a Node harness.
+- [ ] Run the complete available prototypes using their original instructions.
+- [ ] Map routes and flows to verified, demo-only, missing, or broken states.
+- [ ] Compare the complete source against Master Specification v4.0.
+- [ ] Decide which version, if any, is a safe development baseline.
 
 ## P1 — after source and product gates
 
 - [ ] Agree on a small, testable MVP vertical slice.
 - [ ] Define data ownership, clinic isolation, roles, and access rules for that slice.
-- [ ] Implement and test the backend behavior before presenting it as functional UI.
+- [ ] Implement and test backend behavior before presenting it as functional UI.
 - [ ] Add integration and authorization tests for the agreed flow.
 
 ## P2 — after MVP validation
@@ -33,18 +35,14 @@
 
 ### AUDIT-01 — Repository inventory
 
-**Status:** Complete for the available GitHub repository.  
-**Result:** The repository was empty; application audit and tests remain blocked because source code is absent.
+**Status:** Complete for the available GitHub repository.
 
-### Next sprint proposal: SOURCE-01 — Recover and audit prior source
+### SOURCE-01 — Recover and audit prior source
 
-**Goal:** establish whether the previous PETID prototype can be safely continued.
+**Status:** In progress; preliminary review completed for one standalone v1.8 snapshot.
 
-**Acceptance criteria:**
-- Source files are available and inventoried.
-- Existing routes and primary flows are documented.
-- The app is run using its existing instructions, if possible.
-- Available tests have recorded results.
-- A keep / repair / rebuild recommendation is supported by repository evidence.
+**Completed:** archived the snapshot; syntax-checked its 14 inline scripts; reproduced one P2 local-data recovery issue.
+
+**Remaining:** recover v1.8.5 and v1.10 packages; run their original instructions and tests; audit routes and flows; make a documented baseline decision.
 
 **Out of scope:** creating replacement application code before the source audit and baseline decision.
