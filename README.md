@@ -4,7 +4,7 @@ PETID is a project for organizing and sharing an animal's health history with cl
 
 ## Project status
 
-This repository contains the PETID Master Development Specification v4.0, project tracking documents, and an archived standalone v1.8 demo snapshot for audit. The snapshot is historical reference material; it is not the v1.8.5 or v1.10 source tree and is not a production application.
+This repository contains the PETID Master Development Specification v4.0, project tracking documents, and historical v1.8/v1.9/v1.10 audit materials. The v1.8 standalone demo is preserved for review; the v1.10 source tree and v1.8.5 package are incomplete or missing. Nothing here is a production application.
 
 ## Start here
 
@@ -15,6 +15,7 @@ This repository contains the PETID Master Development Specification v4.0, projec
 - [Backlog](docs/BACKLOG.md)
 - [Archived v1.8 snapshot notes](archive/prototypes/v1.8/README.md)
 - [Archived v1.8 standalone HTML](archive/prototypes/v1.8/PETID_Demo_v1_8_PODGLAD.html)
+- [Recovered v1.10 audit notes](archive/prototypes/v1.10/README.md)
 
 ## Development principles
 
