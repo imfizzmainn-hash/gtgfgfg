@@ -30,7 +30,9 @@ test('malformed JSON is quarantined and writes stay blocked until explicit reset
   const data = app.store.load(seed);
   assert.equal(app.store.recoveryRequired(), true);
   assert.equal(app.store.recoveryBackupSaved(), true);
-  assert.equal(app.values.get('petid_clinic_demo_v1_corrupt_backup'), malformed);
+  const backupKey = [...app.values.keys()].find(key => key.startsWith('petid_clinic_demo_v1_corrupt_backup_'));
+  assert.ok(backupKey);
+  assert.equal(app.values.get(backupKey), malformed);
   assert.throws(() => app.store.save(data), /Zapis zablokowany/);
   assert.throws(() => app.transaction.commit({ petid_clinic_demo_v1: JSON.stringify(data) }), /Zapis zablokowany/);
   assert.equal(app.values.get('petid_clinic_demo_v1'), malformed);
@@ -39,7 +41,7 @@ test('malformed JSON is quarantined and writes stay blocked until explicit reset
   app.store.clearRecoveryLock();
   assert.equal(app.store.recoveryRequired(), false);
   assert.equal(app.store.save(data), true);
-  assert.equal(app.values.get('petid_clinic_demo_v1_corrupt_backup'), malformed);
+  assert.equal(app.values.get(backupKey), malformed);
 });
 
 test('valid saved state continues to load and save normally', () => {
@@ -56,6 +58,23 @@ test('valid JSON with an invalid record shape is treated as recoverable corrupti
   const app = createApp({ petid_clinic_demo_v1: raw });
   app.store.load(seed);
   assert.equal(app.store.recoveryRequired(), true);
-  assert.equal(app.values.get('petid_clinic_demo_v1_corrupt_backup'), raw);
+  const backupKey = [...app.values.keys()].find(key => key.startsWith('petid_clinic_demo_v1_corrupt_backup_'));
+  assert.ok(backupKey);
+  assert.equal(app.values.get(backupKey), raw);
   assert.throws(() => app.store.save(seed), /Zapis zablokowany/);
+});
+
+
+test('a new corrupt value is preserved without replacing an earlier quarantine copy', () => {
+  const earlier = 'previous-corrupt-value';
+  const current = '{new-corrupt-value';
+  const app = createApp({
+    petid_clinic_demo_v1: current,
+    petid_clinic_demo_v1_corrupt_backup_old: earlier,
+  });
+  app.store.load(seed);
+  assert.equal(app.values.get('petid_clinic_demo_v1_corrupt_backup_old'), earlier);
+  const newBackupKey = [...app.values.keys()].find(key => key.startsWith('petid_clinic_demo_v1_corrupt_backup_') && key !== 'petid_clinic_demo_v1_corrupt_backup_old');
+  assert.ok(newBackupKey);
+  assert.equal(app.values.get(newBackupKey), current);
 });
