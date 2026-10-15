@@ -13,11 +13,15 @@ Inspected repository metadata, default branch contents, and commit history throu
 
 At the start of the audit, the repository had no files and no commits. The contents endpoint returned “This repository is empty,” and the commit endpoint returned “Git Repository is empty.”
 
-The repository has since been initialized with:
+The repository has since been initialized with project documentation:
 - `README.md`
 - `docs/MASTER_SPEC_v4.0.md`
+- `docs/AUDIT_REPORT.md`
+- `docs/PROJECT_STATE.md`
+- `docs/DECISIONS.md`
+- `docs/BACKLOG.md`
 
-These are project documentation, not application implementation.
+These files document the project and audit; they are not application implementation.
 
 ## Status against the v4.0 specification
 
