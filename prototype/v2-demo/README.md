@@ -4,7 +4,19 @@ Samodzielny prototyp przeglądarkowy przygotowany na podstawie `docs/MASTER_SPEC
 
 ## Uruchomienie
 
-Wymagany Node.js 20 lub nowszy. Bez instalowania zależności:
+Wymagany Node.js 20 lub nowszy. Projekt nie wymaga instalowania dodatkowych pakietów.
+
+### Windows 11
+
+1. Pobierz ZIP gałęzi `prototype-v2-demo` z GitHub i rozpakuj go.
+2. Otwórz folder `prototype/v2-demo`.
+3. Dwukrotnie kliknij `Uruchom-PETID-demo.bat`.
+4. Przeglądarka otworzy `http://127.0.0.1:4173`. Okno konsoli musi pozostać otwarte podczas korzystania z prototypu.
+5. Zamknij okno konsoli, aby zatrzymać lokalny serwer.
+
+Jeśli Windows zgłosi brak Node.js, zainstaluj wersję 20 lub nowszą ze strony [nodejs.org](https://nodejs.org/), a następnie ponownie uruchom plik `.bat`.
+
+### Uruchomienie ręczne
 
 ```sh
 cd prototype/v2-demo
