@@ -7,8 +7,8 @@
 - [x] Archive the recovered standalone v1.8 HTML snapshot unchanged.
 - [x] Run syntax checks on the 14 inline scripts in the workbench copy.
 - [x] Reproduce the malformed-localStorage recovery issue.
-- [x] Add a separate recovery workbench and 3 Node regression tests.
-- [ ] Verify the workbench warning and reset flow in a browser.
+- [x] Add a separate recovery workbench and 4 Node regression tests.
+- [ ] Verify the workbench warning and reset flow in a browser (Chromium is unavailable in the current environment).
 - [ ] Run recovered prototypes using their original instructions.
 - [ ] Map routes and flows to verified, demo-only, missing, or broken states.
 - [ ] Compare complete source against Master Specification v4.0.
