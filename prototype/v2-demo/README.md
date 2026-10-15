@@ -39,6 +39,16 @@ Otwórz `http://127.0.0.1:4173`.
 - Formularz testowy nie wysyła ani nie zapisuje wartości pól; rejestruje lokalnie wyłącznie fakt testu.
 - Kopia uszkodzonego lokalnego zapisu pod osobnym kluczem odzyskiwania; blokada zwykłych zapisów do czasu resetu.
 
+## Szybka ścieżka testowa
+
+1. Wybierz obszar „Strona publiczna” i przejdź przez siedem zakładek.
+2. Wybierz „Panel kliniki”, dodaj pacjenta i utwórz szkic wizyty.
+3. Na liście wizyt podpisz szkic kontem lekarza. Następnie dopisz korektę i sprawdź, że pierwotna treść pozostała w historii.
+4. Dodaj metadane dokumentu z pochodzeniem „Od opiekuna”; sprawdź, że wpis pozostaje niezweryfikowany.
+5. Wybierz „Panel opiekuna”, przełącz przykładowe konto Anna/Marek i sprawdź zakres widocznych zwierząt. Złóż wniosek — wpis nie powinien sam ujawnić dokumentów.
+6. Wybierz „Panel administratora” i sprawdź stan wniosków oraz dziennik zdarzeń.
+7. Użyj „Przywróć dane demo”, aby wrócić do początkowego zestawu.
+
 ## Granice prototypu
 
 To nie jest wersja produkcyjna ani wdrożenie bezpieczne do użycia klinicznego. Role są przełącznikami widoków w przeglądarce, bez uwierzytelniania i autoryzacji po stronie serwera. Dane pozostają w `localStorage`; nie ma backendu, synchronizacji między urządzeniami, szyfrowania, bezpiecznego magazynu plików, wysyłki formularzy ani rzeczywistego zapraszania użytkowników. Prototyp nie obsługuje prawdziwych załączników i nie powinien otrzymywać danych osobowych ani dokumentacji medycznej.
