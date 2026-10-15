@@ -17,7 +17,7 @@ The v1.8 snapshot is historical demo material, not the v1.8.5 package or modular
 - Confirmed the original snapshot has no external script or stylesheet dependencies and has 14 inline script blocks.
 - Compared the archived file's Git blob ID with the recovered local source; they match.
 - Ran `node --check` on all 14 inline scripts in the workbench copy: all passed.
-- Ran `node --test workbench/v1.8-recovery/tests/recovery.test.cjs`: 3 tests passed.
+- Ran `node --test workbench/v1.8-recovery/tests/recovery.test.cjs`: 4 tests passed.
 - Confirmed the GitHub blobs for the workbench HTML and test file match the local files.
 - Did not run a browser, UI, cross-browser, attachment, or end-to-end test suite.
 
@@ -33,7 +33,7 @@ The v1.8 snapshot is historical demo material, not the v1.8.5 package or modular
 
 **Impact:** Locally saved demo records can be lost if the stored JSON is corrupted and the user performs a later save.
 
-**Candidate mitigation:** `workbench/v1.8-recovery/` preserves the malformed value in `petid_clinic_demo_v1_corrupt_backup`, blocks normal data and workflow writes, shows a persistent warning, and permits writing seed data only through the explicit reset path. Three Node regression tests cover malformed JSON, valid data, and invalid record shape. This mitigation is not yet verified in a browser.
+**Candidate mitigation:** `workbench/v1.8-recovery/` preserves the malformed value in `petid_clinic_demo_v1_corrupt_backup`, blocks normal data and workflow writes, shows a persistent warning, and permits writing seed data only through the explicit reset path. Three Node regression tests cover malformed JSON, valid data, and invalid record shape. The workbench UI could not be verified in a browser because no Chromium executable is installed in the environment.
 
 ### PETID-18-02 — P1 production-readiness blocker — browser storage is not an authorization boundary
 
