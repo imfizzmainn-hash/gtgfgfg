@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#38701b">
+    <meta name="description" content="PETID — demonstracyjna cyfrowa historia zdrowia zwierząt.">
+    <title>PETID — prototyp demonstracyjny</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <div class="demo-ribbon"><span class="demo-dot"></span> PROTOTYP · FIKCYJNE DANE · LOKALNY ZAPIS · BRAK LOGOWANIA</div>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="PETID, strona główna" data-page="dashboard">
+        <span class="brand-mark" aria-hidden="true">p</span>
+        <span>PETID<small>historia zdrowia zwierząt</small></span>
+      </a>
+      <div class="topbar-actions">
+        <label class="switch-wrap"><span>Obszar</span><select id="panel-switch" aria-label="Wybierz obszar demonstracji"></select></label>
+        <label class="switch-wrap account-switch" id="account-switch-wrap"><span>Konto testowe</span><select id="account-switch" aria-label="Symuluj konto kliniki"></select></label>
+        <button class="icon-button" id="export-button" type="button" title="Pobierz kopię danych demonstracyjnych" aria-label="Pobierz kopię danych demonstracyjnych">⇩</button>
+        <div class="avatar" aria-hidden="true">AK</div>
+      </div>
+    </header>
+
+    <div class="app-shell" id="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <div class="workspace-label">PRZESTRZEŃ ROBOCZA</div>
+        <div class="clinic-card"><span class="clinic-icon">✳</span><div><strong id="clinic-name">Zielona Łapa</strong><small id="clinic-location">Gdańsk · demo</small></div><span class="chevron">⌄</span></div>
+        <nav id="navigation" aria-label="Nawigacja główna"></nav>
+        <div class="sidebar-bottom">
+          <div class="security-note"><span aria-hidden="true">ⓘ</span><p>To demonstracja. Role i widoczność nie są zabezpieczeniem.</p></div>
+          <button class="sidebar-link" data-action="reset" type="button"><span>↺</span> Przywróć dane demo</button>
+          <div class="user-card"><div class="avatar avatar-small">AK</div><div><strong id="user-name">dr Anna Kowalska</strong><small id="user-role">Lekarz · konto demo</small></div><span class="chevron">⌄</span></div>
+        </div>
+      </aside>
+
+      <main class="main-content" id="main-content">
+        <div class="page-heading"><div><div class="eyebrow" id="page-eyebrow">PANEL KLINIKI</div><h1 id="page-title">Dzień dobry, Anno</h1><p id="page-subtitle">Przegląd najważniejszych zdarzeń w klinice.</p></div><div id="heading-actions"></div></div>
+        <div class="recovery-alert" id="recovery-alert" role="alert" hidden><strong>Wykryto uszkodzony zapis demonstracyjny.</strong><span>Zwykłe zapisy są zablokowane. Kopia została zachowana, jeśli pozwoliła na to pamięć przeglądarki. Użyj „Przywróć dane demo”, jeśli chcesz zastąpić dane fikcyjnym zestawem.</span></div>
+        <div class="view" id="view" tabindex="-1"></div>
+        <footer class="app-footer"><span>PETID · prototyp v2.0</span><span>Nie używaj prawdziwych danych ani dokumentacji medycznej.</span></footer>
+      </main>
+    </div>
+
+    <dialog class="modal" id="modal" aria-labelledby="modal-title"></dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
